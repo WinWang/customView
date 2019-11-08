@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package jcproto;
+
+option java_package = "com.jds.im.proto";
+option java_outer_classname = "MessageProto";
+
+message MsgProtocol {
+    string msg_id = 1;
+    map<string, string> headers = 2;
+    string user_id = 3;
+    Type type = 4;
+    bytes payload = 5;
+    enum Type {
+        CONNECT = 0;
+        CONNACK = 1;
+        DISCONNECT = 2;
+        PUBLISH = 3;
+        PUBACK = 4;
+        PINGREQ = 5;
+        PINGRESP = 6;
+    }
+}

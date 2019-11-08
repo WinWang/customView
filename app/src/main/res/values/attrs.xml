@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="PieChart">
+        <attr name="showText" format="boolean" />
+        <attr name="labelHeight" format="dimension" />
+        <attr name="pointerRadius" format="dimension" />
+        <attr name="labelPosition" format="enum">
+            <enum name="left" value="0" />
+            <enum name="right" value="1" />
+        </attr>
+    </declare-styleable>
+
+
+    <declare-styleable name="StepView">
+        <attr name="backColor" format="color" />
+        <attr name="fontColor" format="color" />
+        <attr name="txtColor" format="color" />
+        <attr name="txtSize" format="dimension" />
+        <attr name="lineWidth" format="integer" />
+    </declare-styleable>
+
+
+    <declare-styleable name="ScoreStepView">
+        <attr name="SbackColor" format="color" />
+        <attr name="SfontColor" format="color" />
+        <attr name="StxtColor" format="color" />
+        <attr name="StxtSize" format="dimension" />
+        <attr name="SlineWidth" format="integer" />
+    </declare-styleable>
+
+
+    <declare-styleable name="SpiderChart">
+        <attr name="spiBackColor" format="color" />
+    </declare-styleable>
+
+
+</resources>
