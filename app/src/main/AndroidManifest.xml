@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.winwang.myapplication">
 
-
     <uses-permission android:name="com.jindashi.stockcircle.permission.MIPUSH_RECEIVE" />
     <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -41,7 +40,6 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -49,14 +47,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SocketActivity"></activity>
+        <activity android:name=".SocketActivity" />
         <activity android:name=".ScrollerActivity" />
         <activity android:name=".StepViewActivity" />
         <activity android:name=".PagerHelperActivity" />
         <activity android:name=".TimeLineActivity" />
         <activity android:name=".MainActivity" />
         <activity
-            android:name=".ChartActivity"
+            android:name=".CircleChartActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
