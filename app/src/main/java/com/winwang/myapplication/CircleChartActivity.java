@@ -29,14 +29,28 @@ public class CircleChartActivity extends AppCompatActivity {
         chart.setDataList(floats);
         /******************************************/
         LineChart lineChart = findViewById(R.id.line_chart);
+        LineChart lineChartMulty = findViewById(R.id.line_chart_1);
         ArrayList<LineChartBean> lineChartBeans = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
+        ArrayList<LineChartBean> lineChartBeans1 = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
             LineChartBean lineChartBean = new LineChartBean();
             lineChartBean.setMinute(i);
             lineChartBean.setValue(new Random().nextInt(100));
             lineChartBeans.add(lineChartBean);
         }
-        lineChart.setChartData(lineChartBeans);
+
+        for (int i = 0; i < 10; i++) {
+            LineChartBean lineChartBean = new LineChartBean();
+            lineChartBean.setMinute(i);
+            lineChartBean.setValue(new Random().nextInt(100));
+            lineChartBeans1.add(lineChartBean);
+        }
+
+        ArrayList<List<LineChartBean>> lists = new ArrayList<>();
+        lists.add(lineChartBeans);
+        lists.add(lineChartBeans1);
+        lineChartMulty.setChartData(lineChartBeans);//设置单挑数据
+//        lineChartMulty.setMultiChartData(lists); //设置多条数据;
 
     }
 }

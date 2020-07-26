@@ -7,6 +7,16 @@ package com.winwang.myapplication.bean;
 public class LineChartBean {
     private float value;
     private int minute;
+    private float xPosition;
+
+
+    public float getxPosition() {
+        return xPosition;
+    }
+
+    public void setxPosition(float xPosition) {
+        this.xPosition = xPosition;
+    }
 
     public float getValue() {
         return value;

@@ -8,16 +8,38 @@
     android:orientation="vertical"
     tools:context=".CircleChartActivity">
 
-    <com.winwang.myapplication.CircleChart
-        android:id="@+id/circle_chart"
-        android:layout_width="200dp"
-        android:layout_height="200dp" />
-
 
     <com.winwang.myapplication.LineChart
-        android:id="@+id/line_chart"
+        android:id="@+id/line_chart_1"
         android:layout_width="match_parent"
         android:layout_height="300dp" />
+
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.winwang.myapplication.CircleChart
+                android:id="@+id/circle_chart"
+                android:layout_width="200dp"
+                android:layout_height="200dp" />
+
+            <com.winwang.myapplication.LineChart
+                android:id="@+id/line_chart"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:visibility="gone" />
+
+
+        </LinearLayout>
+
+
+    </android.support.v4.widget.NestedScrollView>
 
 
 </LinearLayout>
