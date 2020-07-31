@@ -45,7 +45,7 @@ public class ChartActivity extends AppCompatActivity {
         chart.setDataList(dataList);
 
 //        startActivity(new Intent(this,TimeLineActivity.class));
-        startActivity(new Intent(this,SocketActivity.class));
+//        startActivity(new Intent(this,SocketActivity.class));
 
     }
 }

@@ -47,14 +47,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".OptionsRateActivity"></activity>
+        <activity android:name=".CircleChartActivity" />
         <activity android:name=".SocketActivity" />
         <activity android:name=".ScrollerActivity" />
         <activity android:name=".StepViewActivity" />
         <activity android:name=".PagerHelperActivity" />
+        <activity android:name=".ChartActivity" />
         <activity android:name=".TimeLineActivity" />
         <activity android:name=".MainActivity" />
         <activity
-            android:name=".CircleChartActivity"
+            android:name=".HomeActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>

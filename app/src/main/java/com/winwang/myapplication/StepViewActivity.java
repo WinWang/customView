@@ -38,7 +38,7 @@ public class StepViewActivity extends AppCompatActivity {
         st.setMaxStep(500);
         st.setCurrentStep(400);
 
-        startActivity(new Intent(this,ScrollerActivity.class));
+//        startActivity(new Intent(this,ScrollerActivity.class));
 
     }
 }

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeActivity">
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+
+            <Button
+                android:onClick="toStepActivity"
+                android:layout_width="400dp"
+                android:layout_height="50dp"
+                android:text="码表盘-圆弧进度"/>
+
+
+            <Button
+                android:onClick="toBarActivity"
+                android:layout_width="400dp"
+                android:layout_height="50dp"
+                android:text="柱状图"/>
+
+
+            <Button
+                android:onClick="toCircleLineActivity"
+                android:layout_width="400dp"
+                android:layout_height="50dp"
+                android:text="折线图-圆饼图"/>
+
+            <Button
+                android:onClick="toOptionActivity"
+                android:layout_width="400dp"
+                android:layout_height="50dp"
+                android:text="投票控件"/>
+
+        </LinearLayout>
+
+
+    </android.support.v4.widget.NestedScrollView>
+
+
+</android.support.constraint.ConstraintLayout>
