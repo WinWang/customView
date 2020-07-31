@@ -8,7 +8,34 @@ public class LineChartBean {
     private float value;
     private int minute;
     private float xPosition;
+    private float yPosition;
+    private int type; //数据类型
+    private String color;
 
+
+    public float getyPosition() {
+        return yPosition;
+    }
+
+    public void setyPosition(float yPosition) {
+        this.yPosition = yPosition;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
 
     public float getxPosition() {
         return xPosition;
