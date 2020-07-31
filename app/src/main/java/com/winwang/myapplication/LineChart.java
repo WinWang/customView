@@ -5,10 +5,12 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.CornerPathEffect;
 import android.graphics.DashPathEffect;
+import android.graphics.LinearGradient;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PathEffect;
 import android.graphics.Rect;
+import android.graphics.Shader;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -28,6 +30,7 @@ public class LineChart extends View {
     private Paint mAxisPaint; //轴线画笔-坐标画笔
     private Paint mDashPaint; //虚线画笔
     private Paint mLinePaint; //画折线图画笔
+    private Paint mShaderPaint; //阴影画笔
     private Paint mCirclePaint; //小圆圈的画笔
     private Paint mTextPaint; //文字画笔
     private Paint mTipsLinePaint; //提示线条画笔
@@ -42,6 +45,7 @@ public class LineChart extends View {
     private float xEndData; //数据在屏幕停止位置x轴
     private float xStartData;//数据在屏幕开始绘制的位置x轴
     private DecimalFormat decimalFormat = new DecimalFormat("#0.0");
+    private float totalCount; //总的点数个数
 
 
     private float chartMaxY; //y轴最大值
@@ -86,9 +90,17 @@ public class LineChart extends View {
         mLinePaint.setStrokeWidth(colorLineWidth);
         mLinePaint.setColor(Color.parseColor(lineColor));
         mLinePaint.setStyle(Paint.Style.STROKE);
+        mLinePaint.setStrokeWidth(3);
 //        mLinePaint.setStrokeJoin(Paint.Join.ROUND);
-        CornerPathEffect cornerPathEffect = new CornerPathEffect(90);
-//        mLinePaint.setPathEffect(cornerPathEffect);
+        CornerPathEffect cornerPathEffect = new CornerPathEffect(10);
+        mLinePaint.setPathEffect(cornerPathEffect);
+
+        //阴影画笔
+        mShaderPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        mShaderPaint.setStrokeWidth(colorLineWidth);
+        mShaderPaint.setColor(Color.parseColor(lineColor));
+        mShaderPaint.setPathEffect(cornerPathEffect);
+
 
         mCirclePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mCirclePaint.setStyle(Paint.Style.FILL);
@@ -142,7 +154,8 @@ public class LineChart extends View {
 
     public void setChartData(List<LineChartBean> chartBeanList) {
         list = chartBeanList;
-//        chartMaxY = 100;
+        totalCount = list.size() - 1;
+//        chartMaxY = 400;
         for (LineChartBean lineChartBean : chartBeanList) {
             chartMaxY = Math.max(chartMaxY, lineChartBean.getValue());
         }
@@ -151,7 +164,9 @@ public class LineChart extends View {
 
     public void setMultiChartData(List<List<LineChartBean>> chartBeanList) {
         multiList = chartBeanList;
+//        chartMaxY = 400;
         for (List<LineChartBean> lineChartBeans : chartBeanList) {
+            totalCount = lineChartBeans.size() - 1;
             for (LineChartBean lineChartBean : lineChartBeans) {
                 chartMaxY = Math.max(chartMaxY, lineChartBean.getValue());
             }
@@ -184,9 +199,21 @@ public class LineChart extends View {
      */
     private void drawTipsLine(Canvas canvas) {
         if (drawTipsLine) {
-            LineChartBean lineChartBean = list.get(slidePostion);
-            float v = lineChartBean.getxPosition();
-            canvas.drawLine(v, mHeight - borderWidth, v, borderWidth, mTipsLinePaint);
+            if (list != null && list.size() > 0) {
+                LineChartBean lineChartBean = list.get(slidePostion);
+                float xPostion = lineChartBean.getxPosition();
+                float yPostion = lineChartBean.getyPosition();
+                canvas.drawLine(xPostion, mHeight - borderWidth, xPostion, borderWidth, mTipsLinePaint);
+                canvas.drawCircle(xPostion, yPostion, 8, mCirclePaint);
+            }
+            if (multiList != null && multiList.size() > 0) {
+                List<LineChartBean> lineChartBeanList = multiList.get(0);
+                float v = lineChartBeanList.get(slidePostion).getxPosition();
+                canvas.drawLine(v, mHeight - borderWidth, v, borderWidth, mTipsLinePaint);
+                //修改逻辑更改选中tipsLine绘制原点
+
+
+            }
         }
     }
 
@@ -231,7 +258,6 @@ public class LineChart extends View {
                     break;
             }
         }
-
     }
 
     private float getTextHeight() {
@@ -250,7 +276,7 @@ public class LineChart extends View {
      */
     private void drawLine(Canvas canvas) {
         float valueHeigh = chartHeigh / chartMaxY; //平均每个数字表示的高度
-        float valueWidth = chartWidth / 20f;//平均每个点的宽度
+        float valueWidth = chartWidth / totalCount;//平均每个点的宽度
         if (list != null && list.size() > 0) {
             drawSingleLine(canvas, list, valueHeigh, valueWidth);
         } else if (multiList != null && multiList.size() > 0) {
@@ -269,22 +295,38 @@ public class LineChart extends View {
 
     private void drawSingleLine(Canvas canvas, List<LineChartBean> chartList, float valueHeigh, float valueWidth) {
         Path path = new Path();
-        xEndData = chartList.get(chartList.size() - 1).getMinute() * valueWidth + borderWidth;
+        Path shadowPath = new Path();
+//        xEndData = chartList.get(chartList.size() - 1).getMinute() * valueWidth + borderWidth;
+        xEndData = chartList.size() * valueWidth + borderWidth;
         xStartData = borderWidth;
+        String colorString = "";
         for (int i = 0; i < chartList.size(); i++) {
             LineChartBean lineChartBean = chartList.get(i);
             float value = lineChartBean.getValue();
             float yData = chartHeigh - value * valueHeigh + borderWidth;
             float xData = i * valueWidth + borderWidth;
-            canvas.drawCircle(xData, yData, 10, mCirclePaint);
+//            canvas.drawCircle(xData, yData, 3, mCirclePaint);
             if (i == 0) {
                 path.moveTo(xData, yData);
+                shadowPath.moveTo(xData, yData);
             } else {
                 path.lineTo(xData, yData);
+                shadowPath.lineTo(xData, yData);
+            }
+            if (i == chartList.size() - 1) {
+                shadowPath.lineTo(xData, mHeight - borderWidth);
             }
             lineChartBean.setxPosition(xData);
+            lineChartBean.setyPosition(yData);
+            colorString = lineChartBean.getColor();
         }
+        shadowPath.lineTo(borderWidth, mHeight - borderWidth);
+        shadowPath.close();
         getSlideNumber(canvas, chartList);
+        LinearGradient linearGradient = new LinearGradient(mWidth / 2, borderWidth, mWidth / 2, mHeight - borderWidth, Color.parseColor("#5f" + colorString), Color.parseColor("#5fffffff"), Shader.TileMode.REPEAT);
+        mShaderPaint.setShader(linearGradient);
+        canvas.drawPath(shadowPath, mShaderPaint);
+        mLinePaint.setColor(Color.parseColor("#" + colorString));
         canvas.drawPath(path, mLinePaint);
     }
 
@@ -295,11 +337,30 @@ public class LineChart extends View {
      */
     private void getSlideNumber(Canvas canvas, List<LineChartBean> chartList) {
         if (x <= xEndData && x >= xStartData) {
-            slidePostion = (int) ((x - borderWidth) / (mWidth - borderWidth * 2) * 20);
+//            slidePostion = (int) ((x - borderWidth) / (mWidth - borderWidth * 2) * totalCount);
+            if (totalCount == 1) { //2个点
+                if (x <= mWidth / 2) {
+                    slidePostion = (int) ((x - borderWidth) / chartWidth * 1);
+                } else {
+                    slidePostion = (int) ((x - borderWidth) / chartWidth * 2);
+                }
+            } else if (totalCount == 0) { //1个点
+                slidePostion = (int) ((x - borderWidth) / chartWidth * 0);
+            } else {
+                float v = (x - borderWidth) / chartWidth * totalCount;
+                slidePostion = Math.round(v);
+            }
         } else if (x < xStartData) {
             slidePostion = 0;
         } else if (x > xEndData) {
-            slidePostion = list.size() - 1;
+            if (list != null && list.size() > 0) {
+                slidePostion = list.size() - 1;
+            } else if (multiList != null && multiList.size() > 0) {
+                List<LineChartBean> lineChartBeans = multiList.get(0);
+                if (lineChartBeans != null && lineChartBeans.size() > 0) {
+                    slidePostion = lineChartBeans.size() - 1;
+                }
+            }
         }
         String drawText = "";
         if (slidePostion > chartList.size()) {
@@ -316,17 +377,35 @@ public class LineChart extends View {
     public boolean onTouchEvent(MotionEvent event) {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-            case MotionEvent.ACTION_MOVE:
-                drawTipsLine = true;
-//                getParent().requestDisallowInterceptTouchEvent(true);
                 x = event.getX();
                 y = event.getY();
                 if (x >= xStartData && x <= xEndData) {
-                    postInvalidate();
+                    postDelayed(drawTipRunnable, 500);
+                }
+            case MotionEvent.ACTION_MOVE:
+                float xTemp = event.getX();
+                float yTemp = event.getY();
+                float distance = Math.abs(yTemp - y) - Math.abs(xTemp - x);
+                if (distance > 0) {
+                    if (!drawTipsLine) {
+                        getParent().requestDisallowInterceptTouchEvent(false);
+                        removeCallbacks(drawTipRunnable);
+                    }
+                } else {
+                    getParent().requestDisallowInterceptTouchEvent(true);
+                    if (drawTipsLine) {
+                        this.x = event.getX();
+                        y = event.getY();
+                        if (this.x >= xStartData && this.x <= xEndData) {
+                            postInvalidate();
+                        }
+                    }
                 }
                 break;
 
             case MotionEvent.ACTION_UP:
+                getParent().requestDisallowInterceptTouchEvent(false);
+                removeCallbacks(drawTipRunnable);
                 reInitData();
                 postInvalidate();
                 break;
@@ -334,6 +413,15 @@ public class LineChart extends View {
 
         return true;
     }
+
+    private Runnable drawTipRunnable = new Runnable() {
+        @Override
+        public void run() {
+            drawTipsLine = true;
+            postInvalidate();
+        }
+    };
+
 
     private void reInitData() {
         drawTipsLine = false;

@@ -32,25 +32,38 @@ public class CircleChartActivity extends AppCompatActivity {
         LineChart lineChartMulty = findViewById(R.id.line_chart_1);
         ArrayList<LineChartBean> lineChartBeans = new ArrayList<>();
         ArrayList<LineChartBean> lineChartBeans1 = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
+        ArrayList<LineChartBean> lineChartBeans2 = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
             LineChartBean lineChartBean = new LineChartBean();
             lineChartBean.setMinute(i);
             lineChartBean.setValue(new Random().nextInt(100));
+            lineChartBean.setColor("EA4C43"); //红色
             lineChartBeans.add(lineChartBean);
         }
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 3; i++) {
             LineChartBean lineChartBean = new LineChartBean();
             lineChartBean.setMinute(i);
+            lineChartBean.setColor("FFC554"); //黄色
             lineChartBean.setValue(new Random().nextInt(100));
             lineChartBeans1.add(lineChartBean);
         }
 
+        for (int i = 0; i < 3; i++) {
+            LineChartBean lineChartBean = new LineChartBean();
+            lineChartBean.setMinute(i);
+            lineChartBean.setColor("4B87FF"); //蓝色
+            lineChartBean.setValue(new Random().nextInt(100));
+            lineChartBeans2.add(lineChartBean);
+        }
+
+
         ArrayList<List<LineChartBean>> lists = new ArrayList<>();
         lists.add(lineChartBeans);
         lists.add(lineChartBeans1);
+        lists.add(lineChartBeans2);
         lineChartMulty.setChartData(lineChartBeans);//设置单挑数据
-//        lineChartMulty.setMultiChartData(lists); //设置多条数据;
+        lineChart.setMultiChartData(lists); //设置多条数据;
 
     }
 }
