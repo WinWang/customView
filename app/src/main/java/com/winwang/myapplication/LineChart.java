@@ -338,18 +338,8 @@ public class LineChart extends View {
     private void getSlideNumber(Canvas canvas, List<LineChartBean> chartList) {
         if (x <= xEndData && x >= xStartData) {
 //            slidePostion = (int) ((x - borderWidth) / (mWidth - borderWidth * 2) * totalCount);
-            if (totalCount == 1) { //2个点
-                if (x <= mWidth / 2) {
-                    slidePostion = (int) ((x - borderWidth) / chartWidth * 1);
-                } else {
-                    slidePostion = (int) ((x - borderWidth) / chartWidth * 2);
-                }
-            } else if (totalCount == 0) { //1个点
-                slidePostion = (int) ((x - borderWidth) / chartWidth * 0);
-            } else {
-                float v = (x - borderWidth) / chartWidth * totalCount;
-                slidePostion = Math.round(v);
-            }
+            float v = (x - borderWidth) / chartWidth * totalCount;
+            slidePostion = Math.round(v);
         } else if (x < xStartData) {
             slidePostion = 0;
         } else if (x > xEndData) {

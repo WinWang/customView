@@ -33,7 +33,7 @@ public class CircleChartActivity extends AppCompatActivity {
         ArrayList<LineChartBean> lineChartBeans = new ArrayList<>();
         ArrayList<LineChartBean> lineChartBeans1 = new ArrayList<>();
         ArrayList<LineChartBean> lineChartBeans2 = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 10; i++) {
             LineChartBean lineChartBean = new LineChartBean();
             lineChartBean.setMinute(i);
             lineChartBean.setValue(new Random().nextInt(100));
@@ -41,7 +41,7 @@ public class CircleChartActivity extends AppCompatActivity {
             lineChartBeans.add(lineChartBean);
         }
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 10; i++) {
             LineChartBean lineChartBean = new LineChartBean();
             lineChartBean.setMinute(i);
             lineChartBean.setColor("FFC554"); //黄色
@@ -49,7 +49,7 @@ public class CircleChartActivity extends AppCompatActivity {
             lineChartBeans1.add(lineChartBean);
         }
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 10; i++) {
             LineChartBean lineChartBean = new LineChartBean();
             lineChartBean.setMinute(i);
             lineChartBean.setColor("4B87FF"); //蓝色
