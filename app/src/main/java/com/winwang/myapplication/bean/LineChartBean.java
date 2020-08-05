@@ -11,6 +11,16 @@ public class LineChartBean {
     private float yPosition;
     private int type; //数据类型
     private String color;
+    private String time = "6-10";
+
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
 
 
     public float getyPosition() {

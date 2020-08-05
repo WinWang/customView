@@ -33,27 +33,42 @@ public class CircleChartActivity extends AppCompatActivity {
         ArrayList<LineChartBean> lineChartBeans = new ArrayList<>();
         ArrayList<LineChartBean> lineChartBeans1 = new ArrayList<>();
         ArrayList<LineChartBean> lineChartBeans2 = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 10; i++) {
             LineChartBean lineChartBean = new LineChartBean();
             lineChartBean.setMinute(i);
-            lineChartBean.setValue(new Random().nextInt(100));
+            float v = new Random().nextFloat();
+            if (i < 5) {
+                lineChartBean.setValue(-v);
+            }else{
+                lineChartBean.setValue(v);
+            }
             lineChartBean.setColor("EA4C43"); //红色
             lineChartBeans.add(lineChartBean);
         }
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 10; i++) {
             LineChartBean lineChartBean = new LineChartBean();
             lineChartBean.setMinute(i);
             lineChartBean.setColor("FFC554"); //黄色
-            lineChartBean.setValue(new Random().nextInt(100));
+            float v = new Random().nextFloat();
+            if (i < 5) {
+                lineChartBean.setValue(-v);
+            }else{
+                lineChartBean.setValue(v);
+            }
             lineChartBeans1.add(lineChartBean);
         }
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 10; i++) {
             LineChartBean lineChartBean = new LineChartBean();
             lineChartBean.setMinute(i);
             lineChartBean.setColor("4B87FF"); //蓝色
-            lineChartBean.setValue(new Random().nextInt(100));
+            float v = new Random().nextFloat();
+            if (i < 5) {
+                lineChartBean.setValue(-v);
+            }else{
+                lineChartBean.setValue(v);
+            }
             lineChartBeans2.add(lineChartBean);
         }
 

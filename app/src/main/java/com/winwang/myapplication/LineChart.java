@@ -39,16 +39,18 @@ public class LineChart extends View {
     private String colorBorder = "#DBDBDB";
     private String lineColor = "#EA4C43"; //折现的颜色
     private String lineColor1 = "#FFA957"; //折现的颜色
-    private String tipsLineColor = "#528EDA"; //折现的颜色
+    private String tipsLineColor = "#EA4C43"; //折现的颜色
     private int colorLineWidth = 2;
     private int textSize = 30;
     private float xEndData; //数据在屏幕停止位置x轴
     private float xStartData;//数据在屏幕开始绘制的位置x轴
-    private DecimalFormat decimalFormat = new DecimalFormat("#0.0");
+    private DecimalFormat decimalFormat = new DecimalFormat("#0.00");
     private float totalCount; //总的点数个数
+    private int yLableCount = 6;
 
 
     private float chartMaxY; //y轴最大值
+    private float chartMinY; //y轴最小值
     private int mWidth;
     private int mHeight;
     private List<LineChartBean> list;
@@ -59,6 +61,7 @@ public class LineChart extends View {
     private int chartHeigh;
     private int chartWidth;
     private int slidePostion;
+    private float mPerY;
 
     public LineChart(Context context) {
         this(context, null);
@@ -92,14 +95,14 @@ public class LineChart extends View {
         mLinePaint.setStyle(Paint.Style.STROKE);
         mLinePaint.setStrokeWidth(3);
 //        mLinePaint.setStrokeJoin(Paint.Join.ROUND);
-        CornerPathEffect cornerPathEffect = new CornerPathEffect(10);
-        mLinePaint.setPathEffect(cornerPathEffect);
+//        CornerPathEffect cornerPathEffect = new CornerPathEffect(10);
+//        mLinePaint.setPathEffect(cornerPathEffect);
 
         //阴影画笔
         mShaderPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mShaderPaint.setStrokeWidth(colorLineWidth);
         mShaderPaint.setColor(Color.parseColor(lineColor));
-        mShaderPaint.setPathEffect(cornerPathEffect);
+//        mShaderPaint.setPathEffect(cornerPathEffect);
 
 
         mCirclePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -158,7 +161,9 @@ public class LineChart extends View {
 //        chartMaxY = 400;
         for (LineChartBean lineChartBean : chartBeanList) {
             chartMaxY = Math.max(chartMaxY, lineChartBean.getValue());
+            chartMinY = Math.min(chartMinY, lineChartBean.getValue());
         }
+        calcMaxAndMinValue();
         invalidate();
     }
 
@@ -169,9 +174,25 @@ public class LineChart extends View {
             totalCount = lineChartBeans.size() - 1;
             for (LineChartBean lineChartBean : lineChartBeans) {
                 chartMaxY = Math.max(chartMaxY, lineChartBean.getValue());
+                chartMinY = Math.min(chartMinY, lineChartBean.getValue());
             }
         }
+        //y轴每一份的代表的数量
+        calcMaxAndMinValue();
         invalidate();
+    }
+
+    /**
+     * 计算最大最小的值 和Y轴每一份的高度 -》防止贴边，上下各加一份高度
+     */
+    private void calcMaxAndMinValue() {
+        mPerY = (chartMaxY - chartMinY) / (yLableCount - 1);
+//        if (chartMinY < 0) {
+//            chartMaxY = chartMaxY + mPerY;
+//            chartMinY = chartMinY - mPerY;
+//            mPerY = (chartMaxY - chartMinY) / (yLableCount - 1);
+//        }
+        System.out.println(chartMinY + ">>>>>>>>>>>>>>>");
     }
 
 
@@ -225,39 +246,88 @@ public class LineChart extends View {
     private void drawGridBack(Canvas canvas) {
         Rect rect = new Rect(borderWidth, borderWidth, mWidth - borderWidth, mHeight - borderWidth);
         canvas.drawRect(rect, mAxisPaint); //绘制背景方框
-        float perY = chartMaxY / 4;
-        int yGap = rect.height() / 4; //y轴的间隙
+        int yGap = rect.height() / (yLableCount - 1); //y轴的间隙
 //        getTextHeight();
         //绘制Y轴坐标
         mTextPaint.setTextAlign(Paint.Align.RIGHT);
         float textHeight = getTextHeight();
-        for (int i = 0; i < 5; i++) {
-            canvas.drawText(decimalFormat.format(i * perY), borderWidth, mHeight - borderWidth - yGap * i + textHeight / 3, mTextPaint);
-            if (i != 0 && i != 4) {
+        drawYLable(canvas, yGap, textHeight);
+        //绘制X轴坐标
+        float xLableY = mHeight - borderWidth + textHeight; //y轴的标签位置
+        drawXLable(canvas, xLableY);
+    }
+
+    /**
+     * 绘制Y轴的lable
+     *
+     * @param canvas
+     * @param yGap
+     * @param textHeight
+     */
+    private void drawYLable(Canvas canvas, int yGap, float textHeight) {
+        for (int i = 0; i < yLableCount; i++) {
+            if (i == 0) {
+                canvas.drawText(decimalFormat.format(chartMinY), borderWidth, mHeight - borderWidth - yGap * i + textHeight / 3, mTextPaint);
+            } else if (i == yLableCount - 1) {
+                canvas.drawText(decimalFormat.format(chartMaxY), borderWidth, mHeight - borderWidth - yGap * i + textHeight / 3, mTextPaint);
+            } else {//上下位置不需要画虚线
+                canvas.drawText(decimalFormat.format(chartMinY + i * mPerY), borderWidth, mHeight - borderWidth - yGap * i + textHeight / 3, mTextPaint);
                 canvas.drawLine(borderWidth, mHeight - borderWidth - yGap * i, mWidth - borderWidth, mHeight - borderWidth - yGap * i, mDashPaint);
             }
+
         }
-        //回值X轴坐标
-        float xLableY = mHeight - borderWidth + textHeight; //y轴的标签位置
-        for (int i = 0; i < 3; i++) {
-            switch (i) {
-                case 0:
-                    mTextPaint.setTextAlign(Paint.Align.LEFT);
-                    canvas.drawText("9:30", borderWidth, xLableY, mTextPaint);
-                    break;
+    }
 
-                case 1:
+    /**
+     * 绘制X坐标轴的Lable
+     *
+     * @param canvas
+     * @param xLableY
+     */
+    private void drawXLable(Canvas canvas, float xLableY) {
+        if (list != null && list.size() > 0) {
+            if (list.size() == 1) {
+                mTextPaint.setTextAlign(Paint.Align.CENTER);
+                canvas.drawText(list.get(0).getTime(), borderWidth, xLableY, mTextPaint);
+            } else {
+                mTextPaint.setTextAlign(Paint.Align.LEFT);
+                canvas.drawText(list.get(0).getTime(), borderWidth, xLableY, mTextPaint);
+                mTextPaint.setTextAlign(Paint.Align.RIGHT);
+                canvas.drawText(list.get(list.size() - 1).getTime(), mWidth - borderWidth, xLableY, mTextPaint);
+            }
+        } else if (multiList != null && multiList.size() > 0) {
+            List<LineChartBean> lineChartBeans = multiList.get(0);
+            if (lineChartBeans != null && lineChartBeans.size() > 0) {
+                if (lineChartBeans.size() == 1) {
                     mTextPaint.setTextAlign(Paint.Align.CENTER);
-                    canvas.drawLine(mWidth / 2, mHeight - borderWidth, mWidth / 2, borderWidth, mDashPaint);
-                    canvas.drawText("11:30/13:30", mWidth / 2, xLableY, mTextPaint);
-                    break;
-
-                case 2:
+                    canvas.drawText(lineChartBeans.get(0).getTime(), borderWidth, xLableY, mTextPaint);
+                } else {
+                    mTextPaint.setTextAlign(Paint.Align.LEFT);
+                    canvas.drawText(lineChartBeans.get(0).getTime(), borderWidth, xLableY, mTextPaint);
                     mTextPaint.setTextAlign(Paint.Align.RIGHT);
-                    canvas.drawText("15:30", mWidth - borderWidth, xLableY, mTextPaint);
-                    break;
+                    canvas.drawText(lineChartBeans.get(lineChartBeans.size() - 1).getTime(), mWidth - borderWidth, xLableY, mTextPaint);
+                }
             }
         }
+//        for (int i = 0; i < 3; i++) {
+//            switch (i) {
+//                case 0:
+//                    mTextPaint.setTextAlign(Paint.Align.LEFT);
+//                    canvas.drawText("9:30", borderWidth, xLableY, mTextPaint);
+//                    break;
+//
+//                case 1:
+//                    mTextPaint.setTextAlign(Paint.Align.CENTER);
+//                    canvas.drawLine(mWidth / 2, mHeight - borderWidth, mWidth / 2, borderWidth, mDashPaint);
+//                    canvas.drawText("11:30/13:30", mWidth / 2, xLableY, mTextPaint);
+//                    break;
+//
+//                case 2:
+//                    mTextPaint.setTextAlign(Paint.Align.RIGHT);
+//                    canvas.drawText("15:30", mWidth - borderWidth, xLableY, mTextPaint);
+//                    break;
+//            }
+//        }
     }
 
     private float getTextHeight() {
@@ -275,7 +345,7 @@ public class LineChart extends View {
      * @param canvas
      */
     private void drawLine(Canvas canvas) {
-        float valueHeigh = chartHeigh / chartMaxY; //平均每个数字表示的高度
+        float valueHeigh = chartHeigh / (chartMaxY - chartMinY); //平均每个数字表示的高度
         float valueWidth = chartWidth / totalCount;//平均每个点的宽度
         if (list != null && list.size() > 0) {
             drawSingleLine(canvas, list, valueHeigh, valueWidth);
@@ -303,7 +373,12 @@ public class LineChart extends View {
         for (int i = 0; i < chartList.size(); i++) {
             LineChartBean lineChartBean = chartList.get(i);
             float value = lineChartBean.getValue();
-            float yData = chartHeigh - value * valueHeigh + borderWidth;
+            float yData = 0;
+            if (value <= 0) {
+                yData = chartHeigh - (value - chartMinY) * valueHeigh + borderWidth;
+            } else {
+                yData = chartHeigh - (value - chartMinY) * valueHeigh + borderWidth;
+            }
             float xData = i * valueWidth + borderWidth;
 //            canvas.drawCircle(xData, yData, 3, mCirclePaint);
             if (i == 0) {
@@ -338,21 +413,11 @@ public class LineChart extends View {
     private void getSlideNumber(Canvas canvas, List<LineChartBean> chartList) {
         if (x <= xEndData && x >= xStartData) {
 //            slidePostion = (int) ((x - borderWidth) / (mWidth - borderWidth * 2) * totalCount);
-            if (totalCount == 1) { //2个点
-                if (x <= mWidth / 2) {
-                    slidePostion = (int) ((x - borderWidth) / chartWidth * 1);
-                } else {
-                    slidePostion = (int) ((x - borderWidth) / chartWidth * 2);
-                }
-            } else if (totalCount == 0) { //1个点
-                slidePostion = (int) ((x - borderWidth) / chartWidth * 0);
-            } else {
-                float v = (x - borderWidth) / chartWidth * totalCount;
-                slidePostion = Math.round(v);
-            }
+            float v = (x - borderWidth) / chartWidth * totalCount;
+            slidePostion = Math.round(v);
         } else if (x < xStartData) {
             slidePostion = 0;
-        } else if (x > xEndData) {
+        } else if (x >= xEndData) {
             if (list != null && list.size() > 0) {
                 slidePostion = list.size() - 1;
             } else if (multiList != null && multiList.size() > 0) {
@@ -363,7 +428,7 @@ public class LineChart extends View {
             }
         }
         String drawText = "";
-        if (slidePostion > chartList.size()) {
+        if (slidePostion >= chartList.size()) {
             drawText = String.valueOf(chartList.get(chartList.size() - 1).getValue());
         } else {
             drawText = String.valueOf(chartList.get(slidePostion).getValue());
@@ -427,5 +492,14 @@ public class LineChart extends View {
         drawTipsLine = false;
         x = 0;
         y = 0;
+    }
+
+    /**
+     * 设置Y轴的lable个数
+     *
+     * @param lableCount
+     */
+    public void setYLableCount(int lableCount) {
+        this.yLableCount = lableCount;
     }
 }
