@@ -12,6 +12,6 @@ public class OptionsRateActivity extends AppCompatActivity {
         OptionRateView rateView = findViewById(R.id.rateView);
         OptionRateView rateView1 = findViewById(R.id.rateView1);
         rateView.setRateRation(50f, 50f);
-        rateView1.setRateRation(10f, 50f);
+        rateView1.setRateRation(2f, 50f);
     }
 }

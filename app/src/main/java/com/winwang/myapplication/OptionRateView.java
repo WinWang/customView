@@ -118,11 +118,6 @@ public class OptionRateView extends View {
         rightPaht.moveTo(xCenter + gapWidth, 0);
         rightPaht.lineTo((float) width - (float) height, 0);
         rightPaht.arcTo((float) width - (float) height, 0, (float) width, (float) height, -90, 180, false);
-        if (leftRateRation == 0) {
-
-        } else {
-
-        }
         rightPaht.lineTo(xCenter - 30 + gapWidth, height);
         rightPaht.close();
         canvas.drawPath(rightPaht, rightPaint);
