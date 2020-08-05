@@ -9,7 +9,7 @@
     <com.winwang.myapplication.HistogramView
         android:id="@+id/chart"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="200dp"
         app:layout_constraintTop_toTopOf="parent" />
 
 

@@ -16,8 +16,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="center_horizontal">
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
             <com.winwang.myapplication.CircleChart
                 android:id="@+id/circle_chart"
@@ -27,17 +27,17 @@
             <com.winwang.myapplication.LineChart
                 android:id="@+id/line_chart_1"
                 android:layout_width="match_parent"
-                android:layout_height="300dp" />
-
+                android:layout_height="200dp" />
 
             <com.winwang.myapplication.LineChart
                 android:id="@+id/line_chart"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="200dp"
                 android:visibility="visible" />
+
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1000dp"/>
+                android:layout_height="1000dp" />
 
 
         </LinearLayout>

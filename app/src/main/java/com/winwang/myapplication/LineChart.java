@@ -188,9 +188,9 @@ public class LineChart extends View {
     private void calcMaxAndMinValue() {
         mPerY = (chartMaxY - chartMinY) / (yLableCount - 1);
 //        if (chartMinY < 0) {
-//            chartMaxY = chartMaxY + mPerY;
-//            chartMinY = chartMinY - mPerY;
-//            mPerY = (chartMaxY - chartMinY) / (yLableCount - 1);
+        chartMaxY = chartMaxY + mPerY;
+        chartMinY = chartMinY - mPerY;
+        mPerY = (chartMaxY - chartMinY) / (yLableCount - 1);
 //        }
         System.out.println(chartMinY + ">>>>>>>>>>>>>>>");
     }
@@ -232,7 +232,12 @@ public class LineChart extends View {
                 float v = lineChartBeanList.get(slidePostion).getxPosition();
                 canvas.drawLine(v, mHeight - borderWidth, v, borderWidth, mTipsLinePaint);
                 //修改逻辑更改选中tipsLine绘制原点
-
+                for (List<LineChartBean> lineChartBeans : multiList) {
+                    LineChartBean lineChartBean = lineChartBeans.get(slidePostion);
+                    float xPostion = lineChartBean.getxPosition();
+                    float yPostion = lineChartBean.getyPosition();
+                    canvas.drawCircle(xPostion, yPostion, 8, mCirclePaint);
+                }
 
             }
         }
@@ -398,7 +403,7 @@ public class LineChart extends View {
         shadowPath.lineTo(borderWidth, mHeight - borderWidth);
         shadowPath.close();
         getSlideNumber(canvas, chartList);
-        LinearGradient linearGradient = new LinearGradient(mWidth / 2, borderWidth, mWidth / 2, mHeight - borderWidth, Color.parseColor("#5f" + colorString), Color.parseColor("#5fffffff"), Shader.TileMode.REPEAT);
+        LinearGradient linearGradient = new LinearGradient(mWidth / 2, borderWidth, mWidth / 2, mHeight - borderWidth, Color.parseColor("#30" + colorString), Color.parseColor("#30ffffff"), Shader.TileMode.REPEAT);
         mShaderPaint.setShader(linearGradient);
         canvas.drawPath(shadowPath, mShaderPaint);
         mLinePaint.setColor(Color.parseColor("#" + colorString));
@@ -412,9 +417,20 @@ public class LineChart extends View {
      */
     private void getSlideNumber(Canvas canvas, List<LineChartBean> chartList) {
         if (x <= xEndData && x >= xStartData) {
-//            slidePostion = (int) ((x - borderWidth) / (mWidth - borderWidth * 2) * totalCount);
             float v = (x - borderWidth) / chartWidth * totalCount;
             slidePostion = Math.round(v);
+            if (list != null && list.size() > 0) {
+                if (slidePostion >= list.size()) {
+                    slidePostion = list.size() - 1;
+                }
+            } else if (multiList != null && multiList.size() > 0) {
+                List<LineChartBean> lineChartBeans = multiList.get(0);
+                if (lineChartBeans != null && lineChartBeans.size() > 0) {
+                    if (slidePostion >= lineChartBeans.size()) {
+                        slidePostion = lineChartBeans.size() - 1;
+                    }
+                }
+            }
         } else if (x < xStartData) {
             slidePostion = 0;
         } else if (x >= xEndData) {
