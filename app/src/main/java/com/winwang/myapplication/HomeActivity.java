@@ -1,9 +1,13 @@
 package com.winwang.myapplication;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.view.View;
+
+import com.winwang.myapplication.activity.SinViewActivity;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -27,6 +31,10 @@ public class HomeActivity extends AppCompatActivity {
 
     public void toOptionActivity(View view) {
         startActivity(new Intent(this, OptionsRateActivity.class));
+    }
+
+    public void toSinviewActivity(View view) {
+        startActivity(new Intent(this, SinViewActivity.class));
     }
 
 

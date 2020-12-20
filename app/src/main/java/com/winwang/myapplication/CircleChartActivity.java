@@ -1,8 +1,7 @@
 package com.winwang.myapplication;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 
 import com.winwang.myapplication.bean.LineChartBean;
 

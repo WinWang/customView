@@ -1,7 +1,7 @@
 package com.winwang.myapplication;
 
-import android.support.annotation.FloatRange;
-import android.support.v4.view.ViewPager;
+import androidx.annotation.FloatRange;
+import androidx.viewpager.widget.ViewPager;
 import android.view.View;
 
 /**
