@@ -5,7 +5,10 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+
 import androidx.annotation.Nullable;
+
+import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -19,7 +22,8 @@ public class OptionRateView extends View {
     private float leftRate;
     private float rightRateRatio;
     private float rightRate;
-    private float gapWidth = 10f;
+    private float gapWidth = 5f;
+    private Path mPath;
 
 
     public OptionRateView(Context context) {
@@ -64,6 +68,10 @@ public class OptionRateView extends View {
             int padding = getPaddingTop() + getPaddingBottom();
             finalHeight += padding;
         }
+
+        mPath = new Path();
+        RectF rectF = new RectF(0, 0, finalWidth, finalHeight);
+        mPath.addRoundRect(rectF, finalHeight / 2, finalHeight / 2, Path.Direction.CW);
         setMeasuredDimension(finalWidth, finalHeight);
     }
 
@@ -98,6 +106,7 @@ public class OptionRateView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        canvas.clipPath(mPath);
         width = getWidth();
         height = getHeight();
         drawOptionRateView(canvas);
