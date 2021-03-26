@@ -50,6 +50,28 @@
                 android:layout_height="50dp"
                 android:text="指数函数View"/>
 
+
+            <Button
+                android:onClick="toRadarActivity"
+                android:layout_width="400dp"
+                android:layout_height="50dp"
+                android:text="蜘蛛网View"/>
+
+            <Button
+                android:onClick="toCircleRingActivity"
+                android:layout_width="400dp"
+                android:layout_height="50dp"
+                android:text="圆环图View"/>
+
+
+            <Button
+                android:onClick="toBarLineActivity"
+                android:layout_width="400dp"
+                android:layout_height="50dp"
+                android:text="柱状折线View"/>
+
+
+
         </LinearLayout>
 
 

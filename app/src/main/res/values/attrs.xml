@@ -35,4 +35,47 @@
     </declare-styleable>
 
 
+    <declare-styleable name="PieChartWithTag">
+        <attr name="pie_color0" format="color" />
+        <attr name="pie_color1" format="color" />
+        <attr name="pie_color2" format="color" />
+        <attr name="pie_color3" format="color" />
+        <attr name="pie_color4" format="color" />
+        <attr name="pie_progress0" format="float" />
+        <attr name="pie_progress1" format="float" />
+        <attr name="pie_progress2" format="float" />
+        <attr name="pie_progress3" format="float" />
+        <attr name="pie_progress4" format="float" />
+        <!--        pie_width_isPieWidth：-->
+        <!--        是否确定android:layout_width决定饼状图+文字数据的宽度： -->
+        <!--        false:layout_width决定饼状图的大小，文字数据不算在里面-->
+        <!--        true:layout_width决定饼状图+文字数据的大小-->
+        <attr name="pie_layoutWidth_isPieWidth" format="boolean" />
+        <!--        是否进行大小排序-->
+        <attr name="pie_isRank" format="boolean" />
+    </declare-styleable>
+
+    <!--    自定义柱状折线图表-->
+    <declare-styleable name="BarLineChart">
+        <attr name="barTextColor" format="color" />
+        <attr name="barColor" format="color" />
+        <attr name="lineColor" format="color" />
+        <attr name="circleColor" format="color" />
+        <attr name="axisTextColor" format="color" />
+        <attr name="barTextSize" format="dimension" />
+        <attr name="axisTextSize" format="dimension" />
+        <attr name="barWidth" format="float" />
+    </declare-styleable>
+
+
+    <!--    自定义分段View-->
+    <declare-styleable name="SectionView">
+        <attr name="sectionInTextColor" format="color" />
+        <attr name="sectionOutTextColor" format="color" />
+        <attr name="sectionInTextSize" format="dimension" />
+        <attr name="sectionOutTextSize" format="dimension" />
+        <attr name="gapWidth" format="float" />
+    </declare-styleable>
+
+
 </resources>

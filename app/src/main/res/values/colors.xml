@@ -7,4 +7,37 @@
     <color name="colorWhite">#ffffff</color>
     <color name="colorYellow">#ffff00</color>
 
+    <!--    股票柱状图+折线图颜色-->
+    <color name="COLOR_EFDEDD">#EFDEDD</color>
+    <color name="COLOR_FDA31E">#FDA31E</color>
+    <color name="COLOR_666666">#666666</color>
+    <color name="COLOR_DFDFDF">#DFDFDF</color>
+    <color name="COLOR_AD6630">#AD6630</color>
+    <color name="COLOR_FFE8C6">#FFE8C6</color>
+
+    <!--    股票板块分布颜色-->
+    <color name="COLOR_CIRCLE_1">#D42541</color>
+    <color name="COLOR_CIRCLE_2">#E44633</color>
+    <color name="COLOR_CIRCLE_3">#FF8C8C</color>
+    <color name="COLOR_CIRCLE_4">#F5AC41</color>
+    <color name="COLOR_CIRCLE_5">#E7D903</color>
+    <color name="COLOR_CIRCLE_6">#0C8DD7</color>
+    <color name="COLOR_CIRCLE_7">#09C890</color>
+    <color name="COLOR_CIRCLE_8">#4DB84D</color>
+
+    <color name="COLOR_WHITE_TRANS">#90ffffff</color>
+    <color name="WHITE">#ffffff</color>
+    <color name="BLACK">#000000</color>
+
+    <!--    股票市值分布颜色-->
+    <color name="COLOR_F5F5F5">#F5F5F5</color>
+    <color name="COLOR_333333">#333333</color>
+    <color name="COLOR_F9F464">#F9F464</color>
+    <color name="COLOR_F9CB42">#F9CB42</color>
+    <color name="COLOR_FE8738">#FE8738</color>
+    <color name="COLOR_E94608">#E94608</color>
+    <color name="COLOR_D83F34">#D83F34</color>
+    <color name="COLOR_B30C0C">#B30C0C</color>
+
+
 </resources>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.BarLineActivity">
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.winwang.myapplication.view.BarLineChart
+                android:id="@+id/barLineChart"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="20dp"
+                app:axisTextSize="10dp"
+                app:barTextSize="12dp"
+                app:barWidth="40" />
+
+            <com.winwang.myapplication.view.CirclePieView
+                android:id="@+id/pieChart"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_gravity="center" />
+
+
+            <com.winwang.myapplication.view.SectionView
+                android:id="@+id/sectionView"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="30dp"
+                app:gapWidth="5"
+                app:sectionInTextSize="12dp"
+                app:sectionOutTextSize="9dp" />
+
+
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</LinearLayout>

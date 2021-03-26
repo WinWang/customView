@@ -47,7 +47,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".OptionsRateActivity"></activity>
+        <activity android:name=".activity.BarLineActivity"></activity>
+        <activity android:name=".activity.TreeMapActivity" />
+        <activity android:name=".activity.PieChartWithTagActivity" />
+        <activity android:name=".activity.RadarActivity" />
+        <activity android:name=".OptionsRateActivity" />
         <activity android:name=".CircleChartActivity" />
         <activity android:name=".SocketActivity" />
         <activity android:name=".ScrollerActivity" />
