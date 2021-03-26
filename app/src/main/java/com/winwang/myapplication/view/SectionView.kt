@@ -7,7 +7,7 @@ import android.view.View
 import androidx.core.content.ContextCompat
 import com.winwang.myapplication.R
 import com.winwang.myapplication.bean.StockSectionBean
-import com.winwang.myapplication.utils.drawCenterText
+import com.winwang.myapplication.utils.drawCenterTextXY
 
 /**
  *Created by WinWang on 2021/3/25
@@ -117,7 +117,7 @@ class SectionView @JvmOverloads constructor(
         val middleHeight = sectionHeight / 2
         val middleHeightBottom = sectionHeight + sectionHeight / 2 //底部描述文字的位置
 //        drawCenterText(canvas, "${it.firstLevel}", middleOne, middleHeight, paintText) //绘制柱子里面的数据1
-        drawCenterText(canvas, it.firstName, middleOne, middleHeightBottom, paintText)
+        drawCenterTextXY(canvas, it.firstName, middleOne, middleHeightBottom, paintText)
 
         //绘制中间
         val rectFTwo = RectF(leftSection + percentOne + gap, topSection, leftSection + percentOne + gap + percentTwo, bottomSection)
@@ -129,7 +129,7 @@ class SectionView @JvmOverloads constructor(
         //绘制文字
         val middleTwo = leftSection + rectFOne.width() + gap + rectFTwo.width() / 2
 //        drawCenterText(canvas, "${it.secondLevel}", middleTwo, middleHeight, paintText) //绘制柱子里面的数据2
-        drawCenterText(canvas, it.secondName, middleTwo, middleHeightBottom, paintText)
+        drawCenterTextXY(canvas, it.secondName, middleTwo, middleHeightBottom, paintText)
 
         //绘制右边
         val rectFThree = RectF(leftSection + percentOne + percentTwo + gap * 2, topSection, leftSection + percentOne + percentTwo + percentThree + gap * 2, bottomSection)
@@ -141,20 +141,20 @@ class SectionView @JvmOverloads constructor(
         //绘制文字
         val middleThree = leftSection + rectFOne.width() + gap * 2 + rectFTwo.width() + rectFThree.width() / 2
 //        drawCenterText(canvas, "${it.thirdLevel}", middleThree, middleHeight, paintText)  //绘制柱子里面的数据3
-        drawCenterText(canvas, it.thirdName, middleThree, middleHeightBottom, paintText)
+        drawCenterTextXY(canvas, it.thirdName, middleThree, middleHeightBottom, paintText)
 
         canvas.clipPath(pathSection) //裁剪
         paintText.color = textInColor  //设置文字颜色
         paintText.textSize = textSize  //设置文字字体大小
         paintSection.shader = linearGradient1
         canvas.drawRect(rectFOne, paintSection)
-        drawCenterText(canvas, "${it.firstLevel}", middleOne, middleHeight, paintText) //绘制柱子里面的数据1
+        drawCenterTextXY(canvas, "${it.firstLevel}", middleOne, middleHeight, paintText) //绘制柱子里面的数据1
         paintSection.shader = linearGradient2
         canvas.drawRect(rectFTwo, paintSection)
-        drawCenterText(canvas, "${it.secondLevel}", middleTwo, middleHeight, paintText) //绘制柱子里面的数据2
+        drawCenterTextXY(canvas, "${it.secondLevel}", middleTwo, middleHeight, paintText) //绘制柱子里面的数据2
         paintSection.shader = linearGradient3
         canvas.drawRect(rectFThree, paintSection)
-        drawCenterText(canvas, "${it.thirdLevel}", middleThree, middleHeight, paintText)  //绘制柱子里面的数据3
+        drawCenterTextXY(canvas, "${it.thirdLevel}", middleThree, middleHeight, paintText)  //绘制柱子里面的数据3
     }
 
 

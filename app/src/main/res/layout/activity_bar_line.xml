@@ -30,10 +30,9 @@
 
             <com.winwang.myapplication.view.CirclePieView
                 android:id="@+id/pieChart"
-                android:layout_width="300dp"
-                android:layout_height="300dp"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
                 android:layout_gravity="center" />
-
 
             <com.winwang.myapplication.view.SectionView
                 android:id="@+id/sectionView"
@@ -44,6 +43,18 @@
                 app:gapWidth="5"
                 app:sectionInTextSize="12dp"
                 app:sectionOutTextSize="9dp" />
+
+            <com.winwang.myapplication.view.RoundBarChartView
+                android:id="@+id/roundBarChart"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
+                app:roundBarAxisTextColor="#333"
+                app:roundBarAxisTextSize="11dp"
+                app:roundBarTextSize="10dp"
+                app:roundBarWidth="18dp"
+                app:roundBarlineColor="#dfdfdf" />
 
 
         </LinearLayout>

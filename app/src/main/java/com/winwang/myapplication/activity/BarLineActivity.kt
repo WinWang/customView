@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.winwang.myapplication.R
 import com.winwang.myapplication.bean.BarLineBean
+import com.winwang.myapplication.bean.EvaluteBarchartBean
 import com.winwang.myapplication.bean.PieBlockBean
 import com.winwang.myapplication.bean.StockSectionBean
 import kotlinx.android.synthetic.main.activity_bar_line.*
@@ -40,8 +41,24 @@ class BarLineActivity : AppCompatActivity() {
         }
         pieChart.setChartData(list)
 
+        /**
+         * 设置分段图标数据
+         */
         val stockSectionBean = StockSectionBean(36f, 38f, 66f, "100亿以下", "100亿-500亿", "500亿以上")
         sectionView.setSectionData(stockSectionBean)
+
+
+        /**
+         * 设置圆角柱状图数据
+         */
+
+        val barList = ArrayList<EvaluteBarchartBean>()
+        (1..5).forEach {
+            val evaluteBarchartBean = EvaluteBarchartBean(it+1, "$it+1")
+            barList.add(evaluteBarchartBean)
+        }
+        roundBarChart.setChartData(barList)
+
 
     }
 }

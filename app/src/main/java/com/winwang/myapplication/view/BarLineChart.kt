@@ -7,7 +7,7 @@ import android.view.View
 import androidx.core.content.ContextCompat
 import com.winwang.myapplication.R
 import com.winwang.myapplication.bean.BarLineBean
-import com.winwang.myapplication.utils.drawCenterText
+import com.winwang.myapplication.utils.drawCenterTextXY
 import kotlin.math.roundToInt
 
 
@@ -148,9 +148,9 @@ class BarLineChart @JvmOverloads constructor(
                 //绘制柱子
                 canvas.drawLine(leftAndRightPadding + hGap * index, mChartHeight.toFloat(), leftAndRightPadding + hGap * index, mChartHeight - gap * it.barValue, barPaint)
                 //绘制底部的文字
-                drawCenterText(canvas, it.time, leftAndRightPadding + hGap * index, mChartHeight.toFloat() + 15, textAxisPaint)
+                drawCenterTextXY(canvas, it.time, leftAndRightPadding + hGap * index, mChartHeight.toFloat() + 15, textAxisPaint)
                 //绘制柱状图的数字
-                drawCenterText(canvas, it.barValue.toString(), leftAndRightPadding + hGap * index, mChartHeight - gap * it.barValue - 20, textBarPaint)
+                drawCenterTextXY(canvas, it.barValue.toString(), leftAndRightPadding + hGap * index, mChartHeight - gap * it.barValue - 20, textBarPaint)
                 //绘制折线的圆点
                 circlePaint.color = colorCircle
                 canvas.drawCircle(leftAndRightPadding + hGap * index, mChartHeight - gap * it.lineValue, mCircleRadiusOut, circlePaint)

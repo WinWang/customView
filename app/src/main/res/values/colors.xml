@@ -40,4 +40,8 @@
     <color name="COLOR_B30C0C">#B30C0C</color>
 
 
+    <!--    圆头柱状图颜色-->
+    <color name="COLOR_CD9115">#CD9115</color>
+    <color name="COLOR_FDAD1E">#FDAD1E</color>
+
 </resources>
