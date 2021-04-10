@@ -89,5 +89,24 @@
         <attr name="roundBarWidth" format="dimension" />
     </declare-styleable>
 
+    <!--    自定义竖直ProgressView-->
+    <declare-styleable name="VerticalProgressView">
+        <attr name="VPVAxisTextColor" format="color" />
+        <attr name="VPVProgressTextColor" format="color" />
+        <attr name="VPVAxisTextSize" format="dimension" />
+        <attr name="VPVProgressTextSize" format="dimension" />
+        <attr name="VPVgapWidth" format="dimension" />
+        <attr name="VPVpadding" format="dimension" />
+    </declare-styleable>
+
+
+    <!--    自定义横向ProgressView-->
+    <declare-styleable name="HorizentalProgressView">
+        <attr name="HPVpadding" format="dimension" />
+        <attr name="HPVstartColor" format="color" />
+        <attr name="HPVendColor" format="color" />
+        <attr name="HPVbackColor" format="color" />
+    </declare-styleable>
+
 
 </resources>

@@ -54,6 +54,7 @@
                 app:roundBarAxisTextSize="11dp"
                 app:roundBarTextSize="10dp"
                 app:roundBarWidth="18dp"
+                app:roundBarTextColor="#CD9115"
                 app:roundBarlineColor="#dfdfdf" />
 
 

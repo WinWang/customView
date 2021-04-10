@@ -47,7 +47,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.BarLineActivity"></activity>
+        <activity android:name=".activity.VerticalProgressActivity"></activity>
+        <activity android:name=".activity.BlockAveragectivity" />
+        <activity android:name=".activity.BarLineActivity" />
         <activity android:name=".activity.TreeMapActivity" />
         <activity android:name=".activity.PieChartWithTagActivity" />
         <activity android:name=".activity.RadarActivity" />

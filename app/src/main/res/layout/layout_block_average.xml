@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:id="@+id/ll_wrap"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/ll_1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:weightSum="2">
+
+
+            <LinearLayout
+                android:id="@+id/tv_1_layout"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="#00ffff"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_1_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="第1个"
+                    android:textColor="@color/WHITE" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_1_float"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="+0.15%"
+                    android:textColor="@color/WHITE" />
+
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#fff" />
+
+
+            <LinearLayout
+                android:id="@+id/tv_2_layout"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="#000fff"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_2_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="第2个"
+                    android:textColor="@color/WHITE" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_2_float"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="+0.15%"
+                    android:textColor="@color/WHITE" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#fff" />
+
+
+        <LinearLayout
+            android:id="@+id/tv_3_layout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#ffff00"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_3_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="第3个"
+                android:textColor="@color/WHITE" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_3_float"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+0.15%"
+                android:textColor="@color/WHITE" />
+
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#fff" />
+
+        <LinearLayout
+            android:id="@+id/ll_2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:weightSum="2">
+
+            <LinearLayout
+                android:id="@+id/tv_4_layout"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="#EB7575"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_4_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="第4个"
+                    android:textColor="@color/WHITE" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_4_float"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="+0.15%"
+                    android:textColor="@color/WHITE" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#fff" />
+
+            <LinearLayout
+                android:id="@+id/tv_5_layout"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="#291818"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_5_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="第5个"
+                    android:textColor="@color/WHITE" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_5_float"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="+0.15%"
+                    android:textColor="@color/WHITE" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#fff" />
+
+        <LinearLayout
+            android:id="@+id/tv_6_layout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#ff0000"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_6_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="第3个"
+                android:textColor="@color/WHITE" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_6_float"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+0.15%"
+                android:textColor="@color/WHITE" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</FrameLayout>

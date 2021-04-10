@@ -71,6 +71,18 @@
                 android:text="柱状折线View"/>
 
 
+            <Button
+                android:onClick="toBlockActivity"
+                android:layout_width="400dp"
+                android:layout_height="50dp"
+                android:text="板块测试View"/>
+
+            <Button
+                android:onClick="toProgressBarActivity"
+                android:layout_width="400dp"
+                android:layout_height="50dp"
+                android:text="竖直进度View"/>
+
 
         </LinearLayout>
 

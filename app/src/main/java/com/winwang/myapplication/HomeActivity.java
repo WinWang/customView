@@ -8,9 +8,11 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.winwang.myapplication.activity.BarLineActivity;
+import com.winwang.myapplication.activity.BlockAveragectivity;
 import com.winwang.myapplication.activity.PieChartWithTagActivity;
 import com.winwang.myapplication.activity.RadarActivity;
 import com.winwang.myapplication.activity.SinViewActivity;
+import com.winwang.myapplication.activity.VerticalProgressActivity;
 import com.winwang.myapplication.view.PieChartWithTag;
 
 public class HomeActivity extends AppCompatActivity {
@@ -51,6 +53,14 @@ public class HomeActivity extends AppCompatActivity {
 
     public void toBarLineActivity(View view) {
         startActivity(new Intent(this, BarLineActivity.class));
+    }
+
+    public void toBlockActivity(View view) {
+        startActivity(new Intent(this, BlockAveragectivity.class));
+    }
+
+    public void toProgressBarActivity(View view) {
+        startActivity(new Intent(this, VerticalProgressActivity.class));
     }
 
 
