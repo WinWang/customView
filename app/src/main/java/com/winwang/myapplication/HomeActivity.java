@@ -1,19 +1,18 @@
 package com.winwang.myapplication;
 
 import android.content.Intent;
-
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.winwang.myapplication.activity.BarFlingctivity;
 import com.winwang.myapplication.activity.BarLineActivity;
 import com.winwang.myapplication.activity.BlockAveragectivity;
 import com.winwang.myapplication.activity.PieChartWithTagActivity;
 import com.winwang.myapplication.activity.RadarActivity;
 import com.winwang.myapplication.activity.SinViewActivity;
 import com.winwang.myapplication.activity.VerticalProgressActivity;
-import com.winwang.myapplication.view.PieChartWithTag;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -61,6 +60,10 @@ public class HomeActivity extends AppCompatActivity {
 
     public void toProgressBarActivity(View view) {
         startActivity(new Intent(this, VerticalProgressActivity.class));
+    }
+
+    public void toBarFlingActivity(View view) {
+        startActivity(new Intent(this, BarFlingctivity.class));
     }
 
 

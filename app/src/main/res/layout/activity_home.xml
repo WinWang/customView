@@ -83,6 +83,12 @@
                 android:layout_height="50dp"
                 android:text="竖直进度View"/>
 
+            <Button
+                android:onClick="toBarFlingActivity"
+                android:layout_width="400dp"
+                android:layout_height="50dp"
+                android:text="滚动图表View"/>
+
 
         </LinearLayout>
 
