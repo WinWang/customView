@@ -47,7 +47,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.BarFlingctivity"></activity>
+        <activity
+            android:name=".activity.RvHeaderActivity"
+            android:exported="true" />
+        <activity android:name=".activity.BarFlingctivity" />
         <activity android:name=".activity.VerticalProgressActivity" />
         <activity android:name=".activity.BlockAveragectivity" />
         <activity android:name=".activity.BarLineActivity" />
