@@ -89,6 +89,11 @@
                 android:layout_height="50dp"
                 android:text="滚动图表View"/>
 
+            <Button
+                android:onClick="toPUPU"
+                android:layout_width="400dp"
+                android:layout_height="50dp"
+                android:text="朴朴买菜页面效果"/>
 
         </LinearLayout>
 

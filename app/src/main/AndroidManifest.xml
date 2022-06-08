@@ -48,6 +48,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".activity.ScrollingActivity"
+            android:exported="false"
+            android:label="@string/title_activity_scrolling"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".activity.RvHeaderActivity"
             android:exported="true" />
         <activity android:name=".activity.BarFlingctivity" />
@@ -59,7 +64,7 @@
         <activity android:name=".activity.RadarActivity" />
         <activity android:name=".OptionsRateActivity" />
         <activity android:name=".CircleChartActivity" />
-        <activity android:name=".SocketActivity" />
+<!--        <activity android:name=".SocketActivity" />-->
         <activity android:name=".ScrollerActivity" />
         <activity android:name=".StepViewActivity" />
         <activity android:name=".PagerHelperActivity" />

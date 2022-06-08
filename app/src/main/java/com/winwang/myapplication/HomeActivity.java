@@ -11,6 +11,7 @@ import com.winwang.myapplication.activity.BarLineActivity;
 import com.winwang.myapplication.activity.BlockAveragectivity;
 import com.winwang.myapplication.activity.PieChartWithTagActivity;
 import com.winwang.myapplication.activity.RadarActivity;
+import com.winwang.myapplication.activity.ScrollingActivity;
 import com.winwang.myapplication.activity.SinViewActivity;
 import com.winwang.myapplication.activity.VerticalProgressActivity;
 
@@ -64,6 +65,10 @@ public class HomeActivity extends AppCompatActivity {
 
     public void toBarFlingActivity(View view) {
         startActivity(new Intent(this, BarFlingctivity.class));
+    }
+
+    public void toPUPU(View view) {
+        startActivity(new Intent(this, ScrollingActivity.class));
     }
 
 
