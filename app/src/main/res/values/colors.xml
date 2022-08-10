@@ -47,7 +47,8 @@
 
     <color name="COLOR_FEAA37">#FEAA37</color>
 
-
+    <color name="SHADOWN_START_COLOR">#ABAAAA</color>
+    <color name="SHADOWN_END_COLOR">#00ffffff</color>
 
 
 

@@ -14,7 +14,10 @@
         <entry key="app/src/main/res/layout/activity_main_new.xml" value="0.29877425944841673" />
         <entry key="app/src/main/res/layout/activity_mains.xml" value="0.1859375" />
         <entry key="app/src/main/res/layout/activity_rv_header.xml" value="0.3046875" />
+        <entry key="app/src/main/res/layout/activity_scroll_table_layout.xml" value="0.2640625" />
+        <entry key="app/src/main/res/layout/activity_scroller.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/activity_scrolling.xml" value="0.1859375" />
+        <entry key="app/src/main/res/layout/activity_step_view.xml" value="0.3463541666666667" />
         <entry key="app/src/main/res/layout/content_scrolling.xml" value="0.30952380952380953" />
         <entry key="app/src/main/res/layout/item_pupu_header_layout.xml" value="0.23425925925925925" />
         <entry key="app/src/main/res/layout/item_pupu_layout.xml" value="0.3046875" />
@@ -23,7 +26,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

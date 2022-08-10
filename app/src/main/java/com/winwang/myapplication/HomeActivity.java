@@ -11,6 +11,7 @@ import com.winwang.myapplication.activity.BarLineActivity;
 import com.winwang.myapplication.activity.BlockAveragectivity;
 import com.winwang.myapplication.activity.PieChartWithTagActivity;
 import com.winwang.myapplication.activity.RadarActivity;
+import com.winwang.myapplication.activity.ScrollTableActivity;
 import com.winwang.myapplication.activity.ScrollingActivity;
 import com.winwang.myapplication.activity.SinViewActivity;
 import com.winwang.myapplication.activity.VerticalProgressActivity;
@@ -71,5 +72,8 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(new Intent(this, ScrollingActivity.class));
     }
 
+    public void toScrollTable(View view) {
+        startActivity(new Intent(this, ScrollTableActivity.class));
+    }
 
 }
