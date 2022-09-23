@@ -15,6 +15,8 @@ import com.winwang.myapplication.activity.ScrollTableActivity;
 import com.winwang.myapplication.activity.ScrollingActivity;
 import com.winwang.myapplication.activity.SinViewActivity;
 import com.winwang.myapplication.activity.VerticalProgressActivity;
+import com.winwang.myapplication.activity.motionlalyout.MotionActivity1;
+import com.winwang.myapplication.activity.motionlalyout.MotionActivity2;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -74,6 +76,14 @@ public class HomeActivity extends AppCompatActivity {
 
     public void toScrollTable(View view) {
         startActivity(new Intent(this, ScrollTableActivity.class));
+    }
+
+    public void toMotionLayoutFirst(View view) {
+        startActivity(new Intent(this, MotionActivity1.class));
+    }
+
+    public void toMotionLayoutSecond(View view) {
+        startActivity(new Intent(this, MotionActivity2.class));
     }
 
 }

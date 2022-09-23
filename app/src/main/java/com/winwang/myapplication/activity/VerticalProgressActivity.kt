@@ -18,6 +18,7 @@ class VerticalProgressActivity : AppCompatActivity() {
                     delay(5000)
                     Log.e("测试输出", "1111111111")
                 }
+                else -> {}
             }
         }
     }

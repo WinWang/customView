@@ -1,2 +1,4 @@
 include ':app'
 include ':form'
+include ':testlib'
+include ':testlib2'

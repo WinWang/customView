@@ -2,6 +2,8 @@ apply plugin: 'com.android.application'
 //apply plugin: 'com.google.protobuf'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'com.winwang.plugin.lifecycle'
 
 android {
     compileSdkVersion 28
@@ -11,7 +13,7 @@ android {
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-        kotlinOptions{
+        kotlinOptions {
             jvmTarget = 1.8
         }
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
@@ -22,7 +24,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
 
-        preview{
+        preview {
             minifyEnabled false
         }
 
@@ -54,6 +56,8 @@ android {
         viewBinding true
     }
 
+
+
 }
 
 //
@@ -81,11 +85,17 @@ android {
 //
 //}
 
+configurations.all {
+    resolutionStrategy {
+        force 'androidx.core:core:1.6.0'
+        force 'androidx.core:core-ktx:1.6.0'
+    }
+}
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.0.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.0-beta01'
@@ -105,5 +115,9 @@ dependencies {
     implementation 'com.github.evgenyneu:js-evaluator-for-android:v5.0.0'
 //    implementation 'com.github.WinWang:MovieHtml:1.0.3'
 //    previewImplementation 'com.didichuxing.doraemonkit:doraemonkit:3.2.0'
-
+//    implementation "com.github.WinWang.ApplicationInit:applifecycle-annotation:v1.0.3"
+    implementation "com.github.WinWang.ApplicationInit:applifecycle-api:$appLifecycleVersion"
+    kapt "com.github.WinWang.ApplicationInit:applifecycle-processor:$appLifecycleVersion"
+    implementation project(path: ':testlib')
+    implementation project(path: ':testlib2')
 }

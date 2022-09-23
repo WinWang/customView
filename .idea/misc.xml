@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ASMIdeaPluginConfiguration">
+    <asm skipDebug="true" skipFrames="true" skipCode="false" expandFrames="false" />
+    <groovy codeStyle="LEGACY" />
+  </component>
   <component name="CMakeSettings">
     <configurations>
       <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
@@ -9,10 +13,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/layout-w1240dp/content_scrolling.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_home.xml" value="0.29877425944841673" />
+        <entry key="app/src/main/res/layout/activity_home.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.29877425944841673" />
         <entry key="app/src/main/res/layout/activity_main_new.xml" value="0.29877425944841673" />
         <entry key="app/src/main/res/layout/activity_mains.xml" value="0.1859375" />
+        <entry key="app/src/main/res/layout/activity_motion1.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_motion2.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_rv_header.xml" value="0.3046875" />
         <entry key="app/src/main/res/layout/activity_scroll_table_layout.xml" value="0.2640625" />
         <entry key="app/src/main/res/layout/activity_scroller.xml" value="0.28229166666666666" />

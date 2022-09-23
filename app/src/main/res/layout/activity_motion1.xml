@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    app:layoutDescription="@xml/activity_motion1_scene"
+    app:showPaths="true"
+    app:applyMotionScene="true"
+    app:motionProgress="0.5"
+    tools:context=".activity.motionlalyout.MotionActivity1">
+
+    <View
+        android:id="@+id/button"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:background="@color/colorAccent"
+        android:text="Button" />
+
+
+</androidx.constraintlayout.motion.widget.MotionLayout>
