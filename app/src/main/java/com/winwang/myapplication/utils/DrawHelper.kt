@@ -17,13 +17,13 @@ import android.view.View
  * @param paint     画笔
  */
 fun View.drawCenterTextXY(
-        canvas: Canvas?,
-        left: Float,
-        top: Float,
-        right: Float,
-        bottom: Float,
-        title: String,
-        paint: Paint
+    canvas: Canvas?,
+    left: Float,
+    top: Float,
+    right: Float,
+    bottom: Float,
+    title: String,
+    paint: Paint
 ) {
     val rectF = RectF()
     rectF.set(left, top, right, bottom)
@@ -37,11 +37,12 @@ fun View.drawCenterTextXY(
 /**
  * xy方向都依据绘制点居中
  */
-fun View.drawCenterTextXY(canvas: Canvas?,
-                          valusText: String,
-                          x: Float,
-                          y: Float,
-                          paint: Paint
+fun View.drawCenterTextXY(
+    canvas: Canvas?,
+    valusText: String,
+    x: Float,
+    y: Float,
+    paint: Paint
 ) {
 
     val bounds = Rect()
@@ -50,17 +51,30 @@ fun View.drawCenterTextXY(canvas: Canvas?,
     val offSetY = (bounds.bottom - bounds.top) / 2f
     canvas?.drawText(valusText, x - offSetX, y + offSetY, paint)
 
+}
 
+fun View.drawCenterTextXYRect(
+    canvas: Canvas?,
+    valusText: String,
+    rectF: RectF,
+    paint: Paint
+) {
+    val bounds = Rect()
+    paint.getTextBounds(valusText, 0, valusText.length, bounds)
+    val offSetX = (bounds.right - bounds.left) / 2f
+    val offSetY = (bounds.bottom - bounds.top) / 2f
+    canvas?.drawText(valusText, rectF.centerX() - offSetX, rectF.centerY() + offSetY, paint)
 }
 
 /**
  * 只是针对X轴方向的居中绘制
  */
-fun View.drawCenterTextX(canvas: Canvas?,
-                         valusText: String,
-                         x: Float,
-                         y: Float,
-                         paint: Paint
+fun View.drawCenterTextX(
+    canvas: Canvas?,
+    valusText: String,
+    x: Float,
+    y: Float,
+    paint: Paint
 ) {
     val bounds = Rect()
     paint.getTextBounds(valusText, 0, valusText.length, bounds)

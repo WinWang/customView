@@ -7,11 +7,11 @@
     tools:context=".activity.RadarActivity">
 
 
-
     <com.winwang.myapplication.RadarView
-        android:layout_centerInParent="true"
+        android:background="@color/color_00BA6A"
         android:layout_width="200dp"
-        android:layout_height="200dp"/>
+        android:layout_height="200dp"
+        android:layout_centerInParent="true" />
 
 
 </RelativeLayout>

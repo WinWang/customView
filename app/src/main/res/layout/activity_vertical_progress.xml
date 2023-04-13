@@ -19,5 +19,14 @@
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="20dp" />
 
+    <com.winwang.myapplication.view.HorizontalProgressView
+        android:id="@+id/progress"
+        android:layout_margin="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        app:HPVMaxProgress="100"
+        app:HPVTextSize="10sp"
+        app:HPVProgress="100" />
+
 
 </LinearLayout>

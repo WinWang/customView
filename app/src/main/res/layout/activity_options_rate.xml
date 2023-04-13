@@ -4,22 +4,117 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".OptionsRateActivity"
     android:gravity="center"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".OptionsRateActivity">
 
-    <com.winwang.myapplication.OptionRateView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:id="@+id/rateView"/>
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.winwang.myapplication.OptionRateView
+                android:id="@+id/rateView"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="40dp" />
 
 
-    <com.winwang.myapplication.OptionRateView
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="30dp"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:id="@+id/rateView1"/>
+            <com.winwang.myapplication.OptionRateView
+                android:id="@+id/rateView1"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="30dp" />
+
+            <com.winwang.myapplication.view.HorizontalTreeView
+                android:id="@+id/rateView2"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="30dp" />
+
+            <com.winwang.myapplication.view.HorizontalTreeView
+                android:id="@+id/rateView7"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="30dp"
+                app:HTVgapWidth="0dp" />
+
+
+            <com.winwang.myapplication.view.HorizontalTreeView
+                android:id="@+id/rateView3"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="30dp" />
+
+            <com.winwang.myapplication.view.HorizontalTreeView
+                android:id="@+id/rateView8"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="30dp"
+                app:HTVgapWidth="0dp" />
+
+            <com.winwang.myapplication.view.HorizontalTreeView
+                android:id="@+id/rateView4"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="30dp"
+                app:HTVshowTree="false" />
+
+            <com.winwang.myapplication.view.HorizontalTreeView
+                android:id="@+id/rateView5"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="30dp"
+                app:HTVgapWidth="0dp"
+                app:HTVshowCenter="false"
+                app:HTVshowTree="false"
+                app:HTVskewWidth="5dp" />
+
+            <com.winwang.myapplication.view.HorizontalTreeView
+                android:id="@+id/rateView9"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="30dp"
+                app:HTVgapWidth="0dp"
+                app:HTVshowCenter="false"
+                app:HTVshowTree="false"
+                app:HTVskewWidth="5dp" />
+
+            <com.winwang.myapplication.view.HorizontalTreeView
+                android:id="@+id/rateView10"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="30dp"
+                app:HTVgapWidth="0dp"
+                app:HTVshowCenter="false"
+                app:HTVshowTree="false"
+                app:HTVskewWidth="5dp" />
+
+            <com.winwang.myapplication.view.HorizontalTreeView
+                android:id="@+id/rateView6"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="30dp"
+                app:HTVgapWidth="0dp"
+                app:HTVshowTree="false" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.core.widget.NestedScrollView>
+
 
 </LinearLayout>

@@ -118,6 +118,6 @@ dependencies {
 //    implementation "com.github.WinWang.ApplicationInit:applifecycle-annotation:v1.0.3"
     implementation "com.github.WinWang.ApplicationInit:applifecycle-api:$appLifecycleVersion"
     kapt "com.github.WinWang.ApplicationInit:applifecycle-processor:$appLifecycleVersion"
-    implementation project(path: ':testlib')
-    implementation project(path: ':testlib2')
+//    implementation project(path: ':testlib')
+//    implementation project(path: ':testlib2')
 }

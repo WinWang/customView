@@ -49,9 +49,19 @@
 
     <color name="SHADOWN_START_COLOR">#ABAAAA</color>
     <color name="SHADOWN_END_COLOR">#00ffffff</color>
+    <color name="color_FFA200">#FFA200</color>
+    <color name="color_FF6900">#FF6900</color>
+    <color name="color_F4F4F4">#F4F4F4</color>
 
-
-
+    <color name="color_F54F4F">#F54F4F</color>
+    <color name="color_FFAFAF">#FFAFAF</color>
+    <color name="color_63F191">#63F191</color>
+    <color name="color_3CCD8F">#3CCD8F</color>
+    <color name="color_C9C9C9">#C9C9C9</color>
+    <color name="color_EF3434">#EF3434</color>
+    <color name="color_00BA6A">#00BA6A</color>
+    <color name="color_FFF0F0">#FFF0F0</color>
+    <color name="color_E3FFF3">#E3FFF3</color>
 
 
 </resources>

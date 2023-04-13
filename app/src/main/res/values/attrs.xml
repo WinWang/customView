@@ -108,5 +108,39 @@
         <attr name="HPVbackColor" format="color" />
     </declare-styleable>
 
+    <!--    自定义ProgressBar进度条-->
+    <declare-styleable name="HorizontalProgressView">
+        <!--        进度条文字颜色-->
+        <attr name="HPVTextColor1" format="color" />
+        <!--        进度条起始渐变色-->
+        <attr name="HPVstartColor1" format="color" />
+        <!--        进度条结束渐变色-->
+        <attr name="HPVendColor1" format="color" />
+        <!--        设置背景颜色-->
+        <attr name="HPVbackColor1" format="color" />
+        <!--        进度条文字大小-->
+        <attr name="HPVTextSize" format="dimension" />
+        <!--        默认的进度条进度-->
+        <attr name="HPVProgress" format="float" />
+        <!--        默认配置的最大进度-->
+        <attr name="HPVMaxProgress" format="float" />
+    </declare-styleable>
+
+
+    <!--    自定义横向树属性定义-->
+    <declare-styleable name="HorizontalTreeView">
+        <attr name="HTVleftColorFill" format="color" />
+        <attr name="HTVleftColorFade" format="color" />
+        <attr name="HTVrightColorFill" format="color" />
+        <attr name="HTVrightColorFade" format="color" />
+        <attr name="HTVcenterColor" format="color" />
+        <attr name="HTVleftLineColor" format="color" />
+        <attr name="HTVrightLineColor" format="color" />
+        <attr name="HTVsectionHeight" format="dimension" />
+        <attr name="HTVgapWidth" format="dimension" />
+        <attr name="HTVskewWidth" format="dimension" />
+        <attr name="HTVshowTree" format="boolean" />
+        <attr name="HTVshowCenter" format="boolean" />
+    </declare-styleable>
 
 </resources>

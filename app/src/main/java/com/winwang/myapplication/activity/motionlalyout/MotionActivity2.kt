@@ -1,6 +1,7 @@
 package com.winwang.myapplication.activity.motionlalyout
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
@@ -29,7 +30,7 @@ class MotionActivity2 : AppCompatActivity() {
 
             override fun populate(view: View?, index: Int) {
                 println(">>>>>>>$index")
-                if(view is ImageView){
+                if (view is ImageView) {
                     view.setImageResource(images[index])
                 }
             }
@@ -38,5 +39,40 @@ class MotionActivity2 : AppCompatActivity() {
 
             }
         })
+        reflectTest()
+        instanceTest()
     }
+
+    private fun instanceTest() {
+        val currentTimeMillis = System.currentTimeMillis()
+        Log.d("TimeSpend", "$currentTimeMillis")
+        for (index in 0..1000) {
+            val testReflectBean = TestReflectBean()
+        }
+        val currentTimeMillis1 = System.currentTimeMillis()
+        Log.d("TimeSpend>>>>", "${currentTimeMillis1 - currentTimeMillis}")
+    }
+
+    private fun reflectTest() {
+        val currentTimeMillis = System.currentTimeMillis()
+        Log.d("TimeSpend", "$currentTimeMillis")
+        for (index in 0..1000) {
+            try {
+                val forName = Class.forName("com.winwang.myapplication.activity.motionlalyout.MotionActivity2.TestReflectBean")
+                val newInstance = forName.newInstance()
+            } catch (e: java.lang.Exception) {
+                Log.d("errorReflect>>>>", e.toString())
+            }
+
+        }
+        val currentTimeMillis1 = System.currentTimeMillis()
+        Log.d("TimeSpend>>>>", "${currentTimeMillis1 - currentTimeMillis}")
+    }
+
+
+    class TestReflectBean {
+
+    }
+
+
 }

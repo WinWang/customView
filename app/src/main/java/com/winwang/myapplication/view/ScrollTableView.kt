@@ -9,6 +9,7 @@ import android.util.AttributeSet
 import android.util.Log
 import android.view.*
 import android.widget.OverScroller
+import android.widget.RelativeLayout
 import androidx.annotation.RequiresApi
 import com.winwang.myapplication.R
 import com.winwang.myapplication.bean.TableDataWrapper
@@ -498,6 +499,7 @@ class ScrollTableView @JvmOverloads constructor(
                     //条目底部Y距离
                     val startHYNext = itemHeight * (index + 1)
 
+
                     //绘制右边滑动区域
                     item.rightData?.run {
                         this.forEachIndexed { index, item ->
@@ -510,6 +512,7 @@ class ScrollTableView @JvmOverloads constructor(
                             canvas.drawText(item, startX.toFloat(), startY, textPaint)
                         }
                     }
+
 
                     //绘制左边固定标题
                     item.header?.run {

@@ -47,7 +47,7 @@
                 android:layout_width="400dp"
                 android:layout_height="50dp"
                 android:onClick="toSinviewActivity"
-                android:text="指数函数View" />
+                android:text="三角函数View" />
 
 
             <Button
