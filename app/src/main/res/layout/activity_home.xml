@@ -112,6 +112,12 @@
                 android:onClick="toMotionLayoutSecond"
                 android:text="MotionLayout2" />
 
+            <Button
+                android:layout_width="400dp"
+                android:layout_height="50dp"
+                android:onClick="toSwipeLayout"
+                android:text="Swipe侧滑" />
+
         </LinearLayout>
 
 

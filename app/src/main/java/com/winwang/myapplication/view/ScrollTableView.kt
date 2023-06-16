@@ -438,10 +438,10 @@ class ScrollTableView @JvmOverloads constructor(
                 //绘制标题分割线
                 canvas.drawLine(0f, topTitleHeight.toFloat(), measuredWidth.toFloat(), topTitleHeight.toFloat(), linePaint)
 
-                val rightPaht = Path()
-                val topTitleRightRect = RectF(leftWidth, 0f, measuredWidth.toFloat(), topTitleHeight.toFloat())
-                rightPaht.addRect(topTitleRightRect, Path.Direction.CW)
-                canvas.clipPath(rightPaht)
+//                val rightPaht = Path()
+//                val topTitleRightRect = RectF(leftWidth, 0f, measuredWidth.toFloat(), topTitleHeight.toFloat())
+//                rightPaht.addRect(topTitleRightRect, Path.Direction.CW)
+//                canvas.clipPath(rightPaht)
 
                 //绘制右边标题栏
                 rightTitle?.forEachIndexed { index, item ->

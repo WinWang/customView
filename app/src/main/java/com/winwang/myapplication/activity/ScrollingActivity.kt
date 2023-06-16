@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.OnScrollListener
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter
 import com.chad.library.adapter.base.BaseQuickAdapter
-import com.chad.library.adapter.base.BaseViewHolder
+import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.google.android.material.snackbar.Snackbar
 import com.winwang.myapplication.R
 import com.winwang.myapplication.TimeBean
@@ -110,7 +110,7 @@ class ScrollingActivity : AppCompatActivity(), View.OnClickListener {
 }
 
 
-class PuPuAdapter(dataList: List<TimeBean>) : BaseMultiItemQuickAdapter<TimeBean, BaseViewHolder>(dataList) {
+class PuPuAdapter(dataList: MutableList<TimeBean>) : BaseMultiItemQuickAdapter<TimeBean, BaseViewHolder>(dataList) {
 
     companion object {
         const val TYPE_HEADER = 1
@@ -122,7 +122,7 @@ class PuPuAdapter(dataList: List<TimeBean>) : BaseMultiItemQuickAdapter<TimeBean
         addItemType(TYPE_ITEM, R.layout.item_pupu_layout)
     }
 
-    override fun convert(holder: BaseViewHolder, data: TimeBean?) {
+    override fun convert(holder: BaseViewHolder, data: TimeBean) {
         when (holder.itemViewType) {
             1 -> {
                 holder.setText(R.id.tv_title_header, data?.header)
@@ -140,7 +140,7 @@ class LeftAdapter : BaseQuickAdapter<LeftBean, BaseViewHolder>(R.layout.item_pup
 
     var selectPosition: Int? = 0
 
-    override fun convert(holder: BaseViewHolder, data: LeftBean?) {
+    override fun convert(holder: BaseViewHolder, data: LeftBean) {
         holder.setText(R.id.tv_left_title, data?.name)
         if (selectPosition == holder.adapterPosition) {
             holder.setBackgroundColor(R.id.tv_left_title, Color.parseColor("#ffff00"))

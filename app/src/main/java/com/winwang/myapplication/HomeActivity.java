@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.winwang.myapplication.activity.BarFlingctivity;
 import com.winwang.myapplication.activity.BarLineActivity;
 import com.winwang.myapplication.activity.BlockAveragectivity;
+import com.winwang.myapplication.activity.ItemDragLayoutActivity;
 import com.winwang.myapplication.activity.PieChartWithTagActivity;
 import com.winwang.myapplication.activity.RadarActivity;
 import com.winwang.myapplication.activity.ScrollTableActivity;
@@ -84,6 +85,10 @@ public class HomeActivity extends AppCompatActivity {
 
     public void toMotionLayoutSecond(View view) {
         startActivity(new Intent(this, MotionActivity2.class));
+    }
+
+    public void toSwipeLayout(View view) {
+        startActivity(new Intent(this, ItemDragLayoutActivity.class));
     }
 
 }
