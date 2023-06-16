@@ -9,7 +9,9 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.LinearLayoutCompat
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.OnScrollListener
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.entity.MultiItemEntity
@@ -30,7 +32,7 @@ class ItemDragLayoutActivity : AppCompatActivity() {
 
     val dataList = mutableListOf<MultiBean>()
 
-    @SuppressLint("NotifyDataSetChanged", "SetTextI18n")
+    @SuppressLint("NotifyDataSetChanged", "SetTextI18n", "LongLogTag")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_item_drag_layout)
@@ -136,7 +138,7 @@ class ItemDragLayoutActivity : AppCompatActivity() {
                             dataList[parentNodePosition].selected = allSelected
                             if (selectedTag) selectCount++ else selectCount--
                             adapter.notifyItemChanged(position)
-                            if (allSelected) adapter.notifyItemChanged(parentNodePosition)
+                            adapter.notifyItemChanged(parentNodePosition)
                         }
                     }
                     tvCount.text = "($selectCount)"
@@ -175,7 +177,7 @@ class ItemDragLayoutActivity : AppCompatActivity() {
         }
 
         /**
-         * 删除按钮操作
+         * 全部删除-按钮操作
          */
         findViewById<LinearLayoutCompat>(R.id.llDel).setOnClickListener {
             tempLinkHashMap.mapValues {
@@ -188,6 +190,7 @@ class ItemDragLayoutActivity : AppCompatActivity() {
             selectCount = 0
             tvCount.text = "(0)"
             nodeAdapter.notifyDataSetChanged()
+            findFirstAndLastPosition(recyclerView)
         }
 
         /**
@@ -196,6 +199,32 @@ class ItemDragLayoutActivity : AppCompatActivity() {
         findViewById<View>(R.id.tvSwitch).setOnClickListener {
             switchSelectState(tempLinkHashMap)
             nodeAdapter.notifyDataSetChanged()
+        }
+
+        recyclerView.addOnScrollListener(object : OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                    findFirstAndLastPosition(recyclerView)
+                }
+            }
+
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                Log.d("onScrolled", "onScrolled: dx = $dx, dy = $dy")
+            }
+        })
+
+
+    }
+
+    private fun findFirstAndLastPosition(recyclerView: RecyclerView) {
+        (recyclerView.layoutManager as LinearLayoutManager).apply {
+            val firstVisibleItemPosition = findFirstVisibleItemPosition()
+            val lastVisibleItemPosition = findLastVisibleItemPosition()
+            Log.d(
+                "position",
+                "firstVisibleItemPosition: $firstVisibleItemPosition>>>>>>>>>lastVisibleItemPosition:$lastVisibleItemPosition"
+            )
         }
     }
 
