@@ -20,7 +20,8 @@
         android:id="@+id/editCount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="number"/>
+        android:hint="请输入默认分组折叠参数"
+        android:inputType="number" />
 
     <Button
         android:id="@+id/button"
