@@ -4,6 +4,8 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -16,6 +18,7 @@ import com.chad.library.adapter.base.BaseMultiItemQuickAdapter
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.entity.MultiItemEntity
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
+import com.guanaj.easyswipemenulibrary.EasySwipeMenuLayout
 import com.winwang.myapplication.R
 
 /**
@@ -31,6 +34,8 @@ class ItemDragLayoutActivity : AppCompatActivity() {
     var selectedAll: Boolean = false
 
     val dataList = mutableListOf<MultiBean>()
+
+    var expandCount = 3
 
     @SuppressLint("NotifyDataSetChanged", "SetTextI18n", "LongLogTag")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -88,20 +93,20 @@ class ItemDragLayoutActivity : AppCompatActivity() {
                         /********************************************/
                         //TODO 展开状态
                         if (item.expanded) {
-                            if (itemListSize == 3) {
-                                dataList.indexOfLast { it.code == item.code && item.itemType == NodeAdapter.FOOTER_TYPE }.takeIf { it > -1 }
+                            if (itemListSize == expandCount) {
+                                dataList.indexOfLast { it.code == item.code && it.itemType == NodeAdapter.FOOTER_TYPE }.takeIf { it > -1 }
                                     ?.run { adapter.removeAt(this) }
-                            } else if (itemListSize < 3) {
+                            } else if (itemListSize < expandCount) {
                                 //查找不到，是脚布局
                                 deleteHeadAndFooter(newItem, adapter, position, itemList, parentNodePosition)
                             }
                         } else {
                             //TODO 折叠状态
                             val minusPosition = position - parentNodePosition
-                            val deltaPosition = 3 - minusPosition
-                            if (itemListSize > 3) {
+                            val deltaPosition = expandCount - minusPosition
+                            if (itemListSize > expandCount) {
                                 adapter.addData(position + deltaPosition, itemList[minusPosition + deltaPosition - 1])
-                            } else if (itemListSize == 3) {
+                            } else if (itemListSize == expandCount) {
                                 adapter.addData(position + deltaPosition, itemList[minusPosition + deltaPosition - 1])
                                 dataList.indexOfLast { it.code == item.code && it.itemType == NodeAdapter.FOOTER_TYPE }.takeIf { it > -1 }
                                     ?.run { adapter.removeAt(this) }
@@ -184,7 +189,6 @@ class ItemDragLayoutActivity : AppCompatActivity() {
                 val value = it.value
                 value.removeAll { removeItem -> removeItem.selected }
             }
-            dataList.clear()
             flatMapData(tempLinkHashMap)
             switchSelectState(tempLinkHashMap)
             selectCount = 0
@@ -201,6 +205,9 @@ class ItemDragLayoutActivity : AppCompatActivity() {
             nodeAdapter.notifyDataSetChanged()
         }
 
+        /**
+         * 滚动监听
+         */
         recyclerView.addOnScrollListener(object : OnScrollListener() {
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 if (newState == RecyclerView.SCROLL_STATE_IDLE) {
@@ -214,9 +221,39 @@ class ItemDragLayoutActivity : AppCompatActivity() {
             }
         })
 
+        /**
+         * 动态设置数据
+         */
+        val editText = findViewById<EditText>(R.id.editCount)
+        findViewById<Button>(R.id.button).setOnClickListener {
+            val count = editText.text.toString()
+            if (count.isNotEmpty()) {
+                expandCount = count.toInt()
+            }
+            tempLinkHashMap.clear()
+            for (index in 0 until 5) {
+                val tempList = mutableListOf<MultiBean>()
+                if (index == 0) {
+                    for (i in 0 until 2) {
+                        tempList.add(MultiBean("$index", "这是内容文件>>>>>>$i", 1))
+                    }
+                } else {
+                    for (i in 0 until 10) {
+                        tempList.add(MultiBean("$index", "这是内容文件>>>>>>$i", 1))
+                    }
+                }
+                tempLinkHashMap["$index"] = tempList
+            }
+            flatMapData(tempLinkHashMap)
+            nodeAdapter.setNewInstance(dataList)
+        }
+
 
     }
 
+    /**
+     * 查找RV的第一个后最后一个对象
+     */
     private fun findFirstAndLastPosition(recyclerView: RecyclerView) {
         (recyclerView.layoutManager as LinearLayoutManager).apply {
             val firstVisibleItemPosition = findFirstVisibleItemPosition()
@@ -255,7 +292,7 @@ class ItemDragLayoutActivity : AppCompatActivity() {
         adapter: BaseQuickAdapter<*, *>
     ) {
         itemList.forEach { it.expanded = false }
-        val subList = itemList.subList(3, itemList.size)
+        val subList = itemList.subList(expandCount, itemList.size)
         dataList.removeAll(subList)
         dataList.filter { it.code == item.code }.forEach { it.expanded = false }
         item.expanded = false
@@ -291,9 +328,11 @@ class ItemDragLayoutActivity : AppCompatActivity() {
         selectSwitch = !selectSwitch
         dataList.forEach {
             it.showSelect = selectSwitch
+            it.canSwipeLayout = !selectSwitch
             if (it.itemType == NodeAdapter.HEADER_TYPE) {
                 tempLinkHashMap[it.code]?.forEach { item ->
                     item.showSelect = selectSwitch
+                    item.canSwipeLayout = !selectSwitch
                 }
             }
         }
@@ -306,16 +345,17 @@ class ItemDragLayoutActivity : AppCompatActivity() {
     private fun flatMapData(
         tempLinkHashMap: LinkedHashMap<String, MutableList<MultiBean>>,
     ) {
+        dataList.clear()
         dataList.addAll(tempLinkHashMap.flatMap { (key, value) ->
             when {
-                value.size > 3 -> listOf(
-                    MultiBean(key, "我是头部", 0, expanded = false),
-                    *value.take(3).toTypedArray(),
-                    MultiBean(key, "我是脚布局", 2, expanded = false)
+                value.size > expandCount -> listOf(
+                    MultiBean(key, "我是头部", NodeAdapter.HEADER_TYPE, expanded = false),
+                    *value.take(expandCount).toTypedArray(),
+                    MultiBean(key, "我是脚布局", NodeAdapter.FOOTER_TYPE, expanded = false)
                 )
 
                 value.isNotEmpty() -> listOf(
-                    MultiBean(key, "我是头部", 0, expanded = true),
+                    MultiBean(key, "我是头部", NodeAdapter.HEADER_TYPE, expanded = true),
                     *value.toTypedArray()
                 )
 
@@ -345,14 +385,6 @@ class ItemDragLayoutActivity : AppCompatActivity() {
         }
     }
 
-    private fun convertValue(deltaPosition: Int): Int {
-        return when (deltaPosition) {
-            1 -> 2
-            2 -> 1
-            3 -> 0
-            else -> 0
-        }
-    }
 }
 
 data class MultiBean(
@@ -361,7 +393,8 @@ data class MultiBean(
     override var itemType: Int,
     var expanded: Boolean = false,
     var selected: Boolean = false,
-    var showSelect: Boolean = false
+    var showSelect: Boolean = false,
+    var canSwipeLayout: Boolean = true
 ) : MultiItemEntity
 
 
@@ -399,6 +432,8 @@ class NodeAdapter : BaseMultiItemQuickAdapter<MultiBean, BaseViewHolder>() {
                     R.id.iVSelect,
                     if (item.selected) R.drawable.baseline_radio_button_checked_24 else R.drawable.baseline_radio_button_unchecked_24
                 )
+                val easySwipeMenuLayout = holder.getView<EasySwipeMenuLayout>(R.id.swipeLayout)
+                easySwipeMenuLayout.isCanLeftSwipe = item.canSwipeLayout
             }
 
             FOOTER_TYPE -> {
