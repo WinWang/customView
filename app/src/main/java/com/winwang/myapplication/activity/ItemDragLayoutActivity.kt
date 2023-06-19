@@ -20,6 +20,8 @@ import com.chad.library.adapter.base.entity.MultiItemEntity
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.guanaj.easyswipemenulibrary.EasySwipeMenuLayout
 import com.winwang.myapplication.R
+import com.winwang.myapplication.utils.AssetsFileUtil
+import com.winwang.myapplication.utils.AudioPlayer
 
 /**
  * 侧滑列表
@@ -43,8 +45,7 @@ class ItemDragLayoutActivity : AppCompatActivity() {
         setContentView(R.layout.activity_item_drag_layout)
 
         val tvCount = findViewById<TextView>(R.id.tvCount)
-
-
+        AudioPlayer.playAssert(this, "audio.mp3")
         val tempLinkHashMap = LinkedHashMap<String, MutableList<MultiBean>>()
         tempLinkHashMap.clear()
         for (index in 0 until 5) {
@@ -384,6 +385,12 @@ class ItemDragLayoutActivity : AppCompatActivity() {
             }
         }
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        AudioPlayer.release()
+    }
+
 
 }
 
