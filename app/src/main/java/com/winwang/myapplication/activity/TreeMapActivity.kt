@@ -31,6 +31,7 @@ class TreeMapActivity : AppCompatActivity() {
         treeMap.setItemClickListener { item ->
             Toast.makeText(this, "Clicked item: ${item.value}", Toast.LENGTH_SHORT).show()
         }
+//        "我添加了一些测试1"
 
     }
 
