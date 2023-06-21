@@ -15,6 +15,7 @@ import com.winwang.myapplication.activity.RadarActivity;
 import com.winwang.myapplication.activity.ScrollTableActivity;
 import com.winwang.myapplication.activity.ScrollingActivity;
 import com.winwang.myapplication.activity.SinViewActivity;
+import com.winwang.myapplication.activity.TreeMapActivity;
 import com.winwang.myapplication.activity.VerticalProgressActivity;
 import com.winwang.myapplication.activity.motionlalyout.MotionActivity1;
 import com.winwang.myapplication.activity.motionlalyout.MotionActivity2;
@@ -89,6 +90,10 @@ public class HomeActivity extends AppCompatActivity {
 
     public void toSwipeLayout(View view) {
         startActivity(new Intent(this, ItemDragLayoutActivity.class));
+    }
+
+    public void toTreeMapActivity(View view) {
+        startActivity(new Intent(this, TreeMapActivity.class));
     }
 
 }
