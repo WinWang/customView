@@ -115,6 +115,12 @@
             <Button
                 android:layout_width="400dp"
                 android:layout_height="50dp"
+                android:onClick="toMotionLayoutThird"
+                android:text="MotionLayout3" />
+
+            <Button
+                android:layout_width="400dp"
+                android:layout_height="50dp"
                 android:onClick="toSwipeLayout"
                 android:text="Swipe侧滑" />
 
@@ -123,6 +129,24 @@
                 android:layout_height="50dp"
                 android:onClick="toTreeMapActivity"
                 android:text="TreeMap" />
+
+            <Button
+                android:layout_width="400dp"
+                android:layout_height="50dp"
+                android:onClick="toFlowActivity"
+                android:text="Flow" />
+
+            <Button
+                android:layout_width="400dp"
+                android:layout_height="50dp"
+                android:onClick="toCoroutine"
+                android:text="suspendCancellableCoroutine" />
+
+            <Button
+                android:layout_width="400dp"
+                android:layout_height="50dp"
+                android:onClick="workManager"
+                android:text="WorkManager" />
 
         </LinearLayout>
 

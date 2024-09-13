@@ -1,12 +1,11 @@
 apply plugin: 'com.android.application'
 //apply plugin: 'com.google.protobuf'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'com.winwang.plugin.lifecycle'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 33
     defaultConfig {
         applicationId "com.winwang.myapplication"
         minSdkVersion 21
@@ -93,6 +92,8 @@ configurations.all {
 }
 
 dependencies {
+    def work_version = "2.8.0"
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.0.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
@@ -121,4 +122,8 @@ dependencies {
 //    implementation project(path: ':testlib')
 //    implementation project(path: ':testlib2')
     implementation "com.github.anzaizai:EasySwipeMenuLayout:1.1.4"
+    implementation "com.sothree.slidinguppanel:library:3.4.0"
+    // Kotlin + coroutines
+    implementation "androidx.work:work-runtime-ktx:$work_version"
+    implementation 'com.otaliastudios:bottomsheetcoordinatorlayout:1.0.4'
 }

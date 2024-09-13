@@ -4,12 +4,9 @@ import android.os.Build
 import android.os.Bundle
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
 import com.winwang.myapplication.R
 import com.winwang.myapplication.bean.*
-import kotlinx.android.synthetic.main.activity_scroll_table_layout.*
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import com.winwang.myapplication.view.ScrollTableView
 
 /**
  * Created by WinWang on 2022/8/5
@@ -33,7 +30,7 @@ class ScrollTableActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.M)
     private fun generateData() {
         val dataList = arrayListOf<CustomTableData>()
-
+        val scrollable = findViewById<ScrollTableView>(R.id.scrollable)
 
         val rightTitleList = arrayListOf<String>()
         rightTitleList.add("标题1")

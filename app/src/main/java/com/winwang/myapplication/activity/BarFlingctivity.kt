@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.winwang.myapplication.R
 import com.winwang.myapplication.view.BarChartFlingView
-import kotlinx.android.synthetic.main.activity_bar_flingctivity.*
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -12,6 +11,7 @@ class BarFlingctivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bar_flingctivity)
+        val barchartFling = findViewById<BarChartFlingView>(R.id.barchartFling)
         barchartFling.setBarInfoList(createBarInfo())
     }
 

@@ -237,31 +237,31 @@ class ScrollTableView @JvmOverloads constructor(
         OverScroller(context)
     }
 
-    override fun onDown(p0: MotionEvent?): Boolean {
-        return false
-    }
+//    override fun onDown(p0: MotionEvent?): Boolean {
+//        return false
+//    }
+//
+//    override fun onShowPress(p0: MotionEvent?) {
+//        println(">>>>>>>onShowPress")
+//    }
+//
+//    override fun onSingleTapUp(p0: MotionEvent?): Boolean {
+//        println(">>>>>onSingleTapUp")
+//        return false
+//    }
+//
+//    override fun onScroll(p0: MotionEvent?, p1: MotionEvent?, p2: Float, p3: Float): Boolean {
+//        return false
+//    }
+//
+//    override fun onLongPress(p0: MotionEvent?) {
+//
+//    }
 
-    override fun onShowPress(p0: MotionEvent?) {
-        println(">>>>>>>onShowPress")
-    }
-
-    override fun onSingleTapUp(p0: MotionEvent?): Boolean {
-        println(">>>>>onSingleTapUp")
-        return false
-    }
-
-    override fun onScroll(p0: MotionEvent?, p1: MotionEvent?, p2: Float, p3: Float): Boolean {
-        return false
-    }
-
-    override fun onLongPress(p0: MotionEvent?) {
-
-    }
-
-    override fun onFling(p0: MotionEvent?, p1: MotionEvent?, p2: Float, p3: Float): Boolean {
-        println(">>>>>>>>>>onFling")
-        return false
-    }
+//    override fun onFling(p0: MotionEvent?, p1: MotionEvent?, p2: Float, p3: Float): Boolean {
+//        println(">>>>>>>>>>onFling")
+//        return false
+//    }
 
     @SuppressLint("DrawAllocation")
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -364,6 +364,7 @@ class ScrollTableView @JvmOverloads constructor(
                             horizontalValueAnimator.start()
                         }
                     }
+
                     2 -> {//纵向
                         val yVelocity = mVelocityTracker.yVelocity
                         if (abs(yVelocity) > mMinFlingVelocity) {
@@ -595,5 +596,28 @@ class ScrollTableView @JvmOverloads constructor(
         super.onDetachedFromWindow()
         mVelocityTracker?.clear()
         mVelocityTracker?.recycle()
+    }
+
+    override fun onDown(e: MotionEvent): Boolean {
+        return true
+    }
+
+    override fun onShowPress(e: MotionEvent) {
+
+    }
+
+    override fun onSingleTapUp(e: MotionEvent): Boolean {
+        return true
+    }
+
+    override fun onScroll(e1: MotionEvent, e2: MotionEvent, distanceX: Float, distanceY: Float): Boolean {
+        return true
+    }
+
+    override fun onLongPress(e: MotionEvent) {
+    }
+
+    override fun onFling(e1: MotionEvent, e2: MotionEvent, velocityX: Float, velocityY: Float): Boolean {
+        return true
     }
 }

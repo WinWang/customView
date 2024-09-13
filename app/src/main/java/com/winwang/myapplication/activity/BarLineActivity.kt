@@ -7,13 +7,22 @@ import com.winwang.myapplication.bean.BarLineBean
 import com.winwang.myapplication.bean.EvaluteBarchartBean
 import com.winwang.myapplication.bean.PieBlockBean
 import com.winwang.myapplication.bean.StockSectionBean
-import kotlinx.android.synthetic.main.activity_bar_line.*
-import java.util.*
+import com.winwang.myapplication.view.BarLineChart
+import com.winwang.myapplication.view.CirclePieView
+import com.winwang.myapplication.view.RoundBarChartView
+import com.winwang.myapplication.view.SectionView
+import java.util.Random
 
 class BarLineActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bar_line)
+
+        val barLineChart = findViewById<BarLineChart>(R.id.barLineChart)
+        val pieChart = findViewById<CirclePieView>(R.id.pieChart)
+        val sectionView = findViewById<SectionView>(R.id.sectionView)
+        val roundBarChart = findViewById<RoundBarChartView>(R.id.roundBarChart)
+
         /**
          * 设置柱状图和折线图数据
          */
@@ -54,7 +63,7 @@ class BarLineActivity : AppCompatActivity() {
 
         val barList = ArrayList<EvaluteBarchartBean>()
         (1..5).forEach {
-            val evaluteBarchartBean = EvaluteBarchartBean(it+1, "$it+1")
+            val evaluteBarchartBean = EvaluteBarchartBean(it + 1, "$it+1")
             barList.add(evaluteBarchartBean)
         }
         roundBarChart.setChartData(barList)

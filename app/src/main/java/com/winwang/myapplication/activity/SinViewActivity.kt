@@ -3,7 +3,7 @@ package com.winwang.myapplication.activity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.winwang.myapplication.R
-import kotlinx.android.synthetic.main.activity_sinview_layout.*
+import com.winwang.myapplication.view.SinView
 
 /**
  *Created by WinWang on 2020/12/20
@@ -18,6 +18,7 @@ class SinViewActivity : AppCompatActivity() {
     }
 
     private fun initData() {
+        val sinview = findViewById<SinView>(R.id.sinview)
         lifecycle.addObserver(sinview)
     }
 

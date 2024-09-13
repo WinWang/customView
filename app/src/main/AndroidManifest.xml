@@ -49,6 +49,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".activity.motionlalyout.MotionActivity3"
+            android:exported="false" />
+        <activity
+            android:name=".activity.WorkManagerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.DialogActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.FlowActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.ItemDragLayoutActivity"
             android:exported="false" />
         <activity

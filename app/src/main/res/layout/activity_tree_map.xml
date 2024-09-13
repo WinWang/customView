@@ -15,7 +15,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <com.winwang.myapplication.view.SquarifiedTreeMap
+            <com.winwang.myapplication.view.SquarifiedTreemapView
                 android:id="@+id/tree_map"
                 android:layout_width="match_parent"
                 android:layout_height="300dp" />

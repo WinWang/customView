@@ -2,18 +2,16 @@ package com.winwang.myapplication.view
 
 import android.content.Context
 import android.util.AttributeSet
-import android.widget.FrameLayout
 import android.widget.LinearLayout
 import androidx.cardview.widget.CardView
 import com.winwang.myapplication.R
-import kotlinx.android.synthetic.main.layout_block_average.view.*
 
 /**
  *Created by WinWang on 2021/3/29
  *Description->
  */
 class BlockAverageView @JvmOverloads constructor(
-        context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
+    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : CardView(context, attrs, defStyleAttr) {
 
     init {
@@ -21,6 +19,16 @@ class BlockAverageView @JvmOverloads constructor(
     }
 
     fun setData(list: List<Float>) {
+        val ll_wrap = findViewById<LinearLayout>(R.id.ll_wrap)
+        val ll_1 = findViewById<LinearLayout>(R.id.ll_1)
+        val ll_2 = findViewById<LinearLayout>(R.id.ll_2)
+        val tv_1_layout = findViewById<LinearLayout>(R.id.tv_1_layout)
+        val tv_2_layout = findViewById<LinearLayout>(R.id.tv_2_layout)
+        val tv_3_layout = findViewById<LinearLayout>(R.id.tv_3_layout)
+        val tv_4_layout = findViewById<LinearLayout>(R.id.tv_4_layout)
+        val tv_5_layout = findViewById<LinearLayout>(R.id.tv_5_layout)
+        val tv_6_layout = findViewById<LinearLayout>(R.id.tv_6_layout)
+
 
         var sum = 0f
 
